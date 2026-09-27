@@ -42,80 +42,93 @@ const navItems = [
 const projects = [
   {
     number: '01',
-    name: 'Ayush Medico',
-    category: 'Healthcare commerce',
-    description: 'A clear, trustworthy storefront experience for everyday healthcare — designed to make the next action obvious.',
-    tags: ['React', 'Tailwind CSS', 'Firebase'],
-    type: 'medico',
+    name: 'New National Advertising',
+    category: 'Advertising / Printing / Signage',
+    description: 'A premium digital presence for commercial signage, digital printing, and modern brand production.',
+    visual: '/project-visuals/new-national-advertising.jpg',
+    layout: 'feature-right',
+    liveUrl: 'https://newnationaladvertising.com/',
   },
   {
     number: '02',
-    name: 'Dashboard Pro',
-    category: 'Product interface',
-    description: 'A focused data workspace that turns a dense operational view into a calmer, more useful daily tool.',
-    tags: ['Next.js', 'TypeScript', 'PostgreSQL'],
-    type: 'dashboard',
+    name: 'Ayush Medico',
+    category: 'Pharmacy / Medical',
+    description: 'A trustworthy pharmacy experience that makes everyday healthcare feel clear, accessible, and easy to navigate.',
+    visual: '/project-visuals/ayush-medico.jpg',
+    layout: 'feature-left',
+    liveUrl: 'https://ayushmedico.com/',
   },
   {
     number: '03',
-    name: 'Travel Explorer',
-    category: 'Discovery platform',
-    description: 'A visual route through places, stays, and inspiration — built for the moment when browsing becomes a plan.',
-    tags: ['React', 'Node.js', 'TypeScript'],
-    type: 'travel',
+    name: 'Dental Care Trust',
+    category: 'Dental / Healthcare',
+    description: 'An elegant healthcare experience built around calm guidance, professional care, and confidence at every step.',
+    visual: '/project-visuals/dental-care-trust.jpg',
+    layout: 'feature-wide',
+    liveUrl: 'https://dentalcaretrust.com/',
   },
   {
     number: '04',
+    name: 'SaveStreet Dogs',
+    category: 'Animal Rescue / NGO',
+    description: 'A compassionate adoption and rescue experience that helps more people find a meaningful way to help.',
+    visual: '/project-visuals/save-street-dogs.jpg',
+    layout: 'feature-reverse',
+    liveUrl: 'https://savestreetdogss.com/',
+  },
+  {
+    number: '05',
     name: 'Restaurant Website',
-    category: 'Restaurant',
-    description: 'A premium dining experience website with online menu, gallery, table reservation system, and WhatsApp ordering integration.',
-    tags: ['React', 'Tailwind', 'Firebase'],
+    category: 'Restaurant / Food / Hospitality',
+    description: 'A premium hospitality experience shaped around atmosphere, appetite, and the anticipation of a good table.',
+    visual: '/project-visuals/restaurant.jpg',
+    layout: 'split',
     type: 'restaurant',
     liveUrl: 'https://serai-fa-premium.vercel.app/',
   },
   {
-    number: '05',
-    name: 'Dental Clinic Website',
-    category: 'Healthcare',
-    description: 'Modern healthcare web presence with appointment booking, service listings, doctor profiles, and trust-building testimonials.',
-    tags: ['Next.js', 'TypeScript', 'Tailwind'],
-    type: 'dental',
+    number: '06',
+    name: 'Somil Dental Clinic',
+    category: 'Dental Clinic',
+    description: 'A modern clinic presence that makes care, expertise, and the next appointment feel easy to understand.',
+    visual: '/project-visuals/somil-dental-clinic.jpg',
+    layout: 'reverse',
     liveUrl: 'https://somil-dental-clinic.vercel.app/',
   },
   {
-    number: '06',
+    number: '07',
     name: 'Gaming Website',
     category: 'Gaming',
-    description: 'PC game compatibility checker featuring system requirement analysis, game comparisons, FPS estimates, and hardware recommendations.',
-    tags: ['React', 'Framer Motion', 'Tailwind'],
-    type: 'gaming',
-    liveUrl: 'https://tanugamehub.vercel.app',
-  },
-  {
-    number: '07',
-    name: 'Gym Website',
-    category: 'Fitness',
-    description: 'High-energy fitness center website with class schedules, membership plans, trainer profiles, and a motivating visual design.',
-    tags: ['React', 'Tailwind', 'TypeScript'],
-    type: 'gym',
-    liveUrl: 'https://aurum-gym.vercel.app/',
+    description: 'A mature gaming experience built around discovery, performance, and the details that make a setup feel ready.',
+    visual: '/project-visuals/gaming.jpg',
+    layout: 'wide',
+    liveUrl: 'https://tanugamehub.vercel.app/',
   },
   {
     number: '08',
-    name: 'Clothing Website',
-    category: 'Fashion',
-    description: 'Stylish fashion e-commerce site with product listings, category filters, a clean shopping experience, and a modern visual identity.',
-    tags: ['Next.js', 'Tailwind', 'Firebase'],
-    type: 'clothing',
-    liveUrl: 'https://sea-clothing.vercel.app',
+    name: 'Gym Website',
+    category: 'Gym / Fitness',
+    description: 'An energetic fitness experience with the focus and confidence of a place built for showing up and getting stronger.',
+    visual: '/project-visuals/gym.jpg',
+    layout: 'reverse',
+    liveUrl: 'https://aurum-gym.vercel.app/',
   },
   {
     number: '09',
+    name: 'Clothing Website',
+    category: 'Clothing / Fashion',
+    description: 'An editorial fashion storefront where considered presentation gives everyday pieces room to speak.',
+    visual: '/project-visuals/clothing.jpg',
+    layout: 'split',
+    liveUrl: 'https://sea-clothing.vercel.app/',
+  },
+  {
+    number: '10',
     name: 'E-Commerce Website',
     category: 'E-Commerce',
-    description: 'Full-featured online store with product catalog, cart, payment gateway integration, order tracking, and admin dashboard.',
-    tags: ['Next.js', 'TypeScript', 'Stripe'],
-    type: 'ecommerce',
+    description: 'A clean retail experience that gives products, browsing, and the path to purchase equal attention.',
+    visual: '/project-visuals/ecommerce.jpg',
+    layout: 'wide',
     liveUrl: 'https://ecommerce-pro-tanu.vercel.app/',
   },
 ];
@@ -305,11 +318,16 @@ function ProjectArtwork({ type }: { type: string }) {
 }
 
 function ProjectCard({ project }: { project: typeof projects[number] }) {
-  const isTravel = project.type === 'travel';
-  const isDashboard = project.type === 'dashboard';
   return (
-    <article className={`project-story group ${isTravel ? 'project-story-wide' : 'project-story-split'} ${isDashboard ? 'project-story-reverse' : ''}`}>
-      <div className="project-story-visual overflow-hidden"><ProjectArtwork type={project.type} /></div>
+    <article className={`project-story project-story-${project.layout} group`}>
+      <div className="project-story-visual overflow-hidden">
+        <img
+          src={project.visual}
+          alt={`${project.name} — ${project.category}`}
+          className="project-image"
+          loading={Number(project.number) > 2 ? 'lazy' : 'eager'}
+        />
+      </div>
       <div className="project-story-copy">
         <div className="flex items-center justify-between border-b border-[var(--line)] pb-3">
           <span className="font-mono-custom text-[11px] text-muted-foreground">{project.number} / {project.category}</span>
@@ -317,12 +335,11 @@ function ProjectCard({ project }: { project: typeof projects[number] }) {
         </div>
         <h3 className="mt-7 font-display text-4xl font-bold tracking-[-.07em] md:text-5xl">{project.name}</h3>
         <p className="mt-4 max-w-[390px] text-sm leading-7 text-muted-foreground">{project.description}</p>
-        <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2 font-mono-custom text-[10px] uppercase tracking-[.13em] text-muted-foreground">
-          {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
-        </div>
         <div className="mt-10 flex flex-wrap items-center gap-5">
           <button type="button" onClick={() => scrollToId('#contact')} className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.12em] text-foreground">Discuss this build <MoveUpRight size={14} className="button-arrow" /></button>
-          {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.12em] text-[var(--blue)]">Live site <ExternalLink size={13} className="button-arrow" /></a>}
+          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="visit-website flex items-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-xs font-semibold uppercase tracking-[.1em] text-background transition-transform hover:-translate-y-0.5">
+            Visit Website <ExternalLink size={13} className="button-arrow" />
+          </a>
         </div>
       </div>
     </article>
@@ -402,7 +419,7 @@ function Home() {
         <section id="work" className="scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
           <div className="section-shell">
             <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Selected work</span><h2 className="mt-5 font-display text-5xl font-bold tracking-[-.08em] md:text-7xl">Made to be used.</h2></div><p className="max-w-[250px] text-sm leading-6 text-muted-foreground">A few digital products and experiences shaped with care.</p></div>
-            <div><ProjectCard project={projects[0]} /><ProjectCard project={projects[1]} /><ProjectCard project={projects[2]} /></div>
+            <div>{projects.map((project) => <ProjectCard key={project.number} project={project} />)}</div>
           </div>
         </section>
 
