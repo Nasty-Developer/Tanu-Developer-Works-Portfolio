@@ -34,7 +34,7 @@ const queryClient = new QueryClient();
 
 const navItems = [
   { label: 'Work', href: '#work' },
-  { label: 'Studio', href: '#studio' },
+  { label: 'About', href: '#about' },
   { label: 'Process', href: '#process' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -139,7 +139,7 @@ const capabilities = [
   { index: '03', title: 'Full-stack builds', text: 'The front end, API, database, and details that make it hold together.', icon: Zap },
 ];
 
-const skills = ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Firebase', 'Node.js', 'PostgreSQL', 'Git'];
+const skills = ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Firebase', 'Git', 'PostgreSQL', 'Node.js'];
 
 function scrollToId(id: string) {
   document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -161,6 +161,28 @@ function ThemeToggle({ dark, onToggle }: { dark: boolean; onToggle: () => void }
         <Moon size={13} />
       </span>
     </button>
+  );
+}
+
+function HeroVisual() {
+  return (
+    <div className="hero-visual" aria-label="Digital studio workspace showing websites and apps">
+      <div className="hero-visual-glow hero-visual-glow-pink" />
+      <div className="hero-visual-glow hero-visual-glow-blue" />
+      <div className="hero-visual-frame">
+        <img
+          src="/hero-digital-studio.jpg"
+          alt="A premium digital workspace with website and app interfaces"
+        />
+        <span className="hero-chip hero-chip-build">build</span>
+        <span className="hero-chip hero-chip-design">design</span>
+        <span className="hero-chip hero-chip-launch">launch</span>
+      </div>
+      <div className="hero-visual-footer">
+        <span>web / apps / digital products</span>
+        <span className="hero-visual-status"><i /> available for select work</span>
+      </div>
+    </div>
   );
 }
 
@@ -382,20 +404,23 @@ function Home() {
         <section className="relative min-h-[780px] overflow-hidden px-5 pb-24 pt-36 md:px-8 md:pt-44">
           <div className="pointer-events-none absolute left-[56%] top-32 h-[440px] w-[440px] rounded-full bg-[var(--pink)]/10 blur-3xl" />
           <div className="pointer-events-none absolute right-[-80px] top-56 h-[380px] w-[380px] rounded-full bg-[var(--blue)]/10 blur-3xl" />
-          <div className="section-shell relative">
+          <div className="section-shell relative hero-shell">
             <div className="mb-16 flex items-center justify-between border-b border-[var(--line)] pb-4 reveal">
               <p className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-muted-foreground">Mumbai, India <span className="mx-2 text-[var(--pink)]">/</span> available for select work</p>
               <span className="hidden items-center gap-2 font-mono-custom text-[10px] uppercase tracking-[.2em] text-muted-foreground sm:flex"><i className="h-1.5 w-1.5 rounded-full bg-[#55b981]" /> 2025 — now</span>
             </div>
-            <div className="max-w-[920px]">
-              <p className="mb-5 flex items-center gap-2 font-mono-custom text-xs uppercase tracking-[.19em] text-[var(--blue)] reveal reveal-delay-1"><Sparkles size={14} /> Web Developer &amp; Digital Creator</p>
-              <h1 className="font-display text-[clamp(3.5rem,9.5vw,8.8rem)] font-extrabold leading-[.91] tracking-[-.095em] reveal reveal-delay-1">Interfaces<br /><span className="text-[var(--blue)]">with intent.</span></h1>
-              <div className="mt-10 flex max-w-[650px] flex-col justify-between gap-8 sm:flex-row sm:items-end reveal reveal-delay-2">
-                <p className="max-w-[390px] text-[17px] leading-7 text-muted-foreground">I’m Tanu Tapase — a full-stack developer building digital experiences that feel clear, capable, and worth remembering.</p>
-                <button type="button" onClick={() => scrollToId('#work')} className="group flex w-fit items-center gap-3 rounded-full bg-foreground px-5 py-3.5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
-                  Explore selected work <ArrowDownRight size={17} className="button-arrow" />
-                </button>
+            <div className="hero-grid">
+              <div className="max-w-[920px]">
+                <p className="mb-5 flex items-center gap-2 font-mono-custom text-xs uppercase tracking-[.19em] text-[var(--blue)] reveal reveal-delay-1"><Sparkles size={14} /> Web Developer &amp; Digital Creator</p>
+                <h1 className="font-display text-[clamp(3.5rem,9.5vw,8.8rem)] font-extrabold leading-[.91] tracking-[-.095em] reveal reveal-delay-1">Interfaces<br /><span className="text-[var(--blue)]">with intent.</span></h1>
+                <div className="mt-10 flex max-w-[650px] flex-col justify-between gap-8 sm:flex-row sm:items-end reveal reveal-delay-2">
+                  <p className="max-w-[390px] text-[17px] leading-7 text-muted-foreground">I’m Tanu Tapase — a full-stack developer building digital experiences that feel clear, capable, and worth remembering.</p>
+                  <button type="button" onClick={() => scrollToId('#work')} className="group flex w-fit items-center gap-3 rounded-full bg-foreground px-5 py-3.5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
+                    Explore selected work <ArrowDownRight size={17} className="button-arrow" />
+                  </button>
+                </div>
               </div>
+              <HeroVisual />
             </div>
             <div className="relative mt-20 flex items-end justify-between border-t border-[var(--line)] pt-6 reveal reveal-delay-3">
               <div className="flex gap-10">
@@ -407,11 +432,43 @@ function Home() {
           </div>
         </section>
 
-        <section id="studio" className="scroll-mt-28 border-y border-[var(--line)] bg-secondary/45 px-5 py-24 md:px-8 md:py-32">
-          <div className="section-shell">
-            <div className="grid gap-12 md:grid-cols-[.75fr_1.25fr] md:gap-20">
-              <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">The studio</span><h2 className="mt-6 font-display text-4xl font-bold leading-[.98] tracking-[-.07em] md:text-6xl">Small studio.<br />Serious work.</h2></div>
-              <div><p className="max-w-[570px] text-xl leading-8 tracking-[-.02em] md:text-2xl">Tanu Developer is a digital studio for people who want a thoughtful partner, not a ticket queue. I bring business context into the design and engineering room.</p><p className="mt-7 max-w-[500px] leading-7 text-muted-foreground">From the first rough idea to the last responsive detail, I work close to the problem — shaping interfaces, systems, and stories that help a business move forward.</p><button type="button" onClick={() => scrollToId('#contact')} className="mt-9 flex items-center gap-2 text-sm font-semibold">Start a conversation <ArrowUpRight size={16} className="button-arrow" /></button></div>
+        <section id="about" className="scroll-mt-28 border-y border-[var(--line)] bg-secondary/45 px-5 py-24 md:px-8 md:py-32">
+          <div className="section-shell about-shell">
+            <div className="about-intro">
+              <p className="about-phrase">⌁ Same girl.<br />Bigger dreams.</p>
+              <span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">About Me</span>
+            </div>
+            <div className="about-layout">
+              <div className="about-photo-wrap">
+                <div className="about-photo-glow" />
+                <img src="/tanu-portrait.png" alt="Tanu smiling in a warm indoor portrait" className="about-photo" />
+                <span className="about-photo-label">tanu / digital creator</span>
+              </div>
+              <div className="about-copy">
+                <h2 className="font-display text-5xl font-bold leading-[.94] tracking-[-.08em] md:text-7xl">Hi, I'm Tanu</h2>
+                <p className="mt-7 max-w-[520px] text-lg leading-8 text-muted-foreground">I'm a computer science student and a passionate full-stack web developer. I enjoy building clean, efficient and user-friendly websites. I love learning new technologies and turning ideas into real-world products.</p>
+                <div className="about-details mt-10">
+                  <div><span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-muted-foreground">Computer Science</span><strong>Student</strong></div>
+                  <div><span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-muted-foreground">Mumbai, India</span><strong>Based here</strong></div>
+                  <div><span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-muted-foreground">Tech · Games · Animals</span><strong>(yes, all of it)</strong></div>
+                </div>
+              </div>
+            </div>
+            <blockquote className="about-quote">"I don't just want to build websites.<br /><span>I want to build things that matter."</span></blockquote>
+          </div>
+        </section>
+
+        <section id="skills" className="scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
+          <div className="section-shell grid gap-12 md:grid-cols-[1fr_1fr] md:gap-20">
+            <div>
+              <span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">My Skills</span>
+              <h2 className="mt-6 font-display text-5xl font-bold leading-[.96] tracking-[-.08em] md:text-7xl">Built for<br /><span className="text-[var(--pink)]">the details.</span></h2>
+              <p className="mt-7 max-w-[390px] text-lg leading-8 text-muted-foreground">Technologies I Work With</p>
+              <a href="https://tanu-labs.vercel.app/#contact" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">View All Skills <ExternalLink size={15} className="button-arrow" /></a>
+            </div>
+            <div>
+              <p className="max-w-[470px] text-lg leading-8 text-muted-foreground">A flexible stack for fast feedback, durable systems, and interfaces that stay lovely when the screen gets smaller.</p>
+              <div className="skill-index mt-12 max-w-[620px] border-t border-[var(--line)]">{skills.map((skill, index) => <div key={skill} className="flex items-baseline justify-between border-b border-[var(--line)] py-4 transition-colors hover:border-[var(--blue)]"><span className="font-mono-custom text-[10px] text-muted-foreground">{String(index + 1).padStart(2, '0')}</span><span className="font-display text-2xl font-semibold tracking-[-.05em] md:text-3xl">{skill}</span><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-muted-foreground">{index < 4 ? 'interface' : index < 6 ? 'systems' : 'tooling'}</span></div>)}</div>
             </div>
           </div>
         </section>
@@ -434,13 +491,6 @@ function Home() {
           <div className="section-shell grid gap-14 md:grid-cols-[.72fr_1.28fr]">
             <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">The process</span><h2 className="mt-6 max-w-[330px] font-display text-5xl font-bold leading-[.96] tracking-[-.08em] md:text-6xl">Clear steps.<br />No theatre.</h2><p className="mt-7 max-w-[300px] text-sm leading-6 text-muted-foreground">You’ll always know what we’re solving, what happens next, and where your project stands.</p></div>
             <div className="border-t border-[var(--line)]">{[['01', 'Align', 'We get specific about the business, the audience, and what success needs to feel like.'], ['02', 'Shape', 'I translate the brief into a sharp direction — structure, language, visual system, and plan.'], ['03', 'Build', 'The experience comes to life in clean, responsive code with regular, useful check-ins.'], ['04', 'Refine', 'We test the edges, tune the details, and hand over something ready for the real world.']].map(([num, title, text]) => <div key={num} className="grid grid-cols-[46px_1fr] gap-5 border-b border-[var(--line)] py-7 md:grid-cols-[68px_150px_1fr] md:gap-7"><span className="font-mono-custom text-xs text-[var(--blue)]">{num}</span><h3 className="font-display text-xl font-semibold tracking-[-.04em]">{title}</h3><p className="col-start-2 text-sm leading-6 text-muted-foreground md:col-start-auto">{text}</p></div>)}</div>
-          </div>
-        </section>
-
-        <section className="px-5 py-24 md:px-8 md:py-32">
-          <div className="section-shell grid gap-12 md:grid-cols-[1fr_1fr] md:gap-20">
-            <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Tools of the trade</span><h2 className="mt-6 font-display text-5xl font-bold leading-[.96] tracking-[-.08em] md:text-7xl">Built for<br /><span className="text-[var(--pink)]">the details.</span></h2></div>
-            <div><p className="max-w-[470px] text-lg leading-8 text-muted-foreground">A flexible stack for fast feedback, durable systems, and interfaces that stay lovely when the screen gets smaller.</p><div className="skill-index mt-12 max-w-[620px] border-t border-[var(--line)]">{skills.map((skill, index) => <div key={skill} className="flex items-baseline justify-between border-b border-[var(--line)] py-4 transition-colors hover:border-[var(--blue)]"><span className="font-mono-custom text-[10px] text-muted-foreground">{String(index + 1).padStart(2, '0')}</span><span className="font-display text-2xl font-semibold tracking-[-.05em] md:text-3xl">{skill}</span><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-muted-foreground">{index < 4 ? 'interface' : index < 6 ? 'systems' : 'tooling'}</span></div>)}</div></div>
           </div>
         </section>
 

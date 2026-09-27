@@ -98,6 +98,212 @@
 }
 
 .site-shell { overflow: clip; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(330px, .96fr);
+  align-items: center;
+  gap: clamp(3rem, 7vw, 7rem);
+}
+.hero-visual {
+  position: relative;
+  min-height: 450px;
+  padding: 1.25rem 0 0;
+}
+.hero-visual-frame {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1.75rem;
+  background: var(--card);
+  box-shadow: var(--shadow-soft);
+  transform: rotate(2deg);
+  transition: transform .65s cubic-bezier(.22, 1, .36, 1), box-shadow .65s ease;
+}
+.hero-visual:hover .hero-visual-frame {
+  transform: rotate(0deg) translateY(-5px);
+  box-shadow: var(--shadow-float);
+}
+.hero-visual-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(255,255,255,.18), transparent 40%, rgba(59,130,246,.08));
+}
+.hero-visual-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / .96;
+  object-fit: cover;
+  filter: saturate(.92) contrast(.98);
+}
+.hero-visual-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(28px);
+  opacity: .58;
+  animation: glow-drift 8s ease-in-out infinite alternate;
+}
+.hero-visual-glow-pink {
+  right: -3%;
+  top: 6%;
+  width: 10rem;
+  height: 10rem;
+  background: var(--pink);
+}
+.hero-visual-glow-blue {
+  bottom: 4%;
+  left: -7%;
+  width: 12rem;
+  height: 12rem;
+  background: var(--blue);
+  animation-delay: -3s;
+}
+@keyframes glow-drift {
+  from { transform: translate3d(-8px, 4px, 0) scale(.96); opacity: .42; }
+  to { transform: translate3d(8px, -8px, 0) scale(1.04); opacity: .66; }
+}
+.hero-chip {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid rgba(255,255,255,.65);
+  border-radius: 999px;
+  background: rgba(255,255,255,.78);
+  padding: .45rem .7rem;
+  color: #17243b;
+  font-family: var(--app-font-mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 24px rgba(30,42,67,.12);
+  backdrop-filter: blur(12px);
+  animation: chip-float 6s ease-in-out infinite;
+}
+.hero-chip-build { left: -1rem; top: 24%; }
+.hero-chip-design { right: -1rem; top: 45%; animation-delay: -2s; }
+.hero-chip-launch { bottom: 13%; left: 11%; animation-delay: -4s; }
+@keyframes chip-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+.hero-visual-footer {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem .2rem 0;
+  color: var(--muted-foreground);
+  font-family: var(--app-font-mono);
+  font-size: .58rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.hero-visual-status {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  text-align: right;
+}
+.hero-visual-status i {
+  display: inline-block;
+  width: .36rem;
+  height: .36rem;
+  border-radius: 999px;
+  background: #55b981;
+}
+.about-shell { position: relative; }
+.about-intro {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.about-phrase {
+  font-family: var(--display-font);
+  font-size: clamp(2.3rem, 5vw, 5.4rem);
+  font-weight: 700;
+  letter-spacing: -.08em;
+  line-height: .9;
+}
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: clamp(3rem, 9vw, 9rem);
+}
+.about-photo-wrap {
+  position: relative;
+  width: min(100%, 420px);
+  margin-inline: auto;
+}
+.about-photo-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 1.2rem -1.2rem -1.2rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 1.3rem;
+}
+.about-photo-glow {
+  position: absolute;
+  right: -16%;
+  bottom: -8%;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 999px;
+  background: var(--pink);
+  filter: blur(34px);
+  opacity: .34;
+}
+.about-photo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  aspect-ratio: .72;
+  border-radius: 1.3rem;
+  object-fit: cover;
+  object-position: center 28%;
+  box-shadow: var(--shadow-soft);
+}
+.about-photo-label {
+  position: absolute;
+  z-index: 2;
+  right: -1rem;
+  bottom: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: hsl(var(--background) / .9);
+  padding: .55rem .75rem;
+  color: var(--muted-foreground);
+  font-family: var(--app-font-mono);
+  font-size: .58rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+.about-copy { padding-top: 1rem; }
+.about-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+.about-details div { display: flex; flex-direction: column; gap: .45rem; }
+.about-details strong { font-family: var(--display-font); font-size: 1.1rem; letter-spacing: -.04em; }
+.about-quote {
+  max-width: 900px;
+  margin: 7rem auto 0;
+  font-family: var(--display-font);
+  font-size: clamp(2rem, 4.5vw, 4.8rem);
+  font-weight: 700;
+  letter-spacing: -.08em;
+  line-height: .98;
+}
+.about-quote span { color: var(--blue); }
 .reveal { animation: reveal .7s cubic-bezier(.22, 1, .36, 1) both; }
 .reveal-delay-1 { animation-delay: .1s; }
 .reveal-delay-2 { animation-delay: .18s; }
@@ -168,6 +374,19 @@ button:hover .button-arrow, a:hover .button-arrow { transform: translate(3px, -3
 .visit-website { white-space: nowrap; }
 .contact-form input, .contact-form textarea { border-radius: 0; }
 @media (max-width: 767px) {
+  .hero-grid { display: block; }
+  .hero-visual { min-height: 0; margin-top: 4rem; padding-top: 0; }
+  .hero-visual-frame { transform: rotate(1deg); }
+  .hero-visual-footer { flex-direction: column; gap: .6rem; }
+  .hero-visual-status { text-align: left; }
+  .hero-chip-build { left: -.45rem; }
+  .hero-chip-design { right: -.45rem; }
+  .about-intro { display: block; margin-bottom: 3rem; }
+  .about-intro > span { display: block; margin-top: 2.5rem; }
+  .about-layout { display: block; }
+  .about-photo-wrap { width: min(88%, 380px); margin-bottom: 3.5rem; }
+  .about-details { grid-template-columns: 1fr; gap: 1rem; }
+  .about-quote { margin-top: 4.5rem; }
   .project-story { padding: 48px 0 58px; }
   .project-story-feature-right,
   .project-story-feature-left,
