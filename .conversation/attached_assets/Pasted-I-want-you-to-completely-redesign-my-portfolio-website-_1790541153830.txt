@@ -1,0 +1,739 @@
+I want you to completely redesign my portfolio website from scratch.
+
+## 🌐 EXISTING WEBSITE
+
+My current portfolio:
+https://tanudevworks.vercel.app
+
+REFERENCE / DESIGN INSPIRATION:
+https://tanu-developer.vercel.app
+
+Use both websites as references.
+
+IMPORTANT:
+The existing website contains my actual portfolio content, projects, information, sections, links, and other important details.
+
+### DO NOT DELETE OR LOSE MY CONTENT.
+
+I want you to preserve the complete CONTENT and FUNCTIONALITY of the existing website while completely rebuilding the DESIGN and USER EXPERIENCE.
+
+Think of this as:
+
+**Same person + same portfolio content + same important information + completely new premium design.**
+
+Do NOT simply modify the existing CSS.
+
+Do NOT make a few color changes and call it a redesign.
+
+I want the visual system rebuilt properly from scratch.
+
+---
+
+# 🎯 MAIN GOAL
+
+Transform the current portfolio into an **extremely professional, premium, modern developer portfolio** that looks like a high-end designer/developer portfolio.
+
+It should feel:
+
+- Professional
+- Premium
+- Elegant
+- Clean
+- Modern
+- Futuristic
+- Minimal
+- Sophisticated
+- Creative
+- Smooth
+- High-end
+- Production-ready
+
+It should NOT look like a generic AI-generated portfolio template.
+
+It should feel like a real professional developer/designer personally designed it.
+
+---
+
+# 🎨 COLOR DIRECTION
+
+Use a premium:
+
+### WHITE + PINK + BLUE
+
+visual identity.
+
+The main design should use a beautiful combination of:
+
+- White
+- Soft/off-white
+- Very light grey
+- Elegant pink
+- Soft pink
+- Modern blue
+- Deep blue/navy where necessary
+
+The colors should be used carefully.
+
+Do NOT make the entire website pink.
+
+Do NOT make the entire website blue.
+
+Do NOT use excessive gradients everywhere.
+
+Do NOT use purple.
+
+The pink + blue combination should feel sophisticated and luxurious.
+
+Think:
+
+**Apple-level cleanliness + modern developer portfolio + premium creative agency aesthetic.**
+
+---
+
+# 🌓 LIGHT MODE + DARK MODE
+
+The website MUST support both:
+
+### ☀️ LIGHT MODE
+and
+### 🌙 DARK MODE
+
+Both modes need to look intentionally designed.
+
+Do NOT simply invert the colors for dark mode.
+
+LIGHT MODE:
+
+- White/off-white background
+- Dark text
+- Pink + blue accents
+- Soft borders
+- Elegant shadows
+- Clean cards
+- Lots of breathing room
+
+DARK MODE:
+
+- Deep charcoal / near-black background
+- White/light text
+- Controlled pink and blue accents
+- Subtle borders
+- Soft glow
+- Premium glass effects where appropriate
+
+The dark mode must remain elegant and readable.
+
+Do not make dark mode extremely flashy.
+
+---
+
+# ⭐ REFERENCE WEBSITE
+
+Use:
+
+https://tanu-developer.vercel.app
+
+as a visual reference for the general **pink + white + blue direction**.
+
+However:
+
+### DO NOT COPY THE DESIGN OF THE REFERENCE WEBSITE.
+
+Use it only to understand the visual direction and color personality.
+
+The final portfolio must have its OWN design.
+
+I want something substantially more polished and professional.
+
+---
+
+# 🧠 DESIGN FROM SCRATCH
+
+Rebuild the entire visual design system.
+
+Create a proper design language including:
+
+- Typography
+- Font hierarchy
+- Spacing system
+- Border radius
+- Cards
+- Buttons
+- Navigation
+- Section layouts
+- Background treatment
+- Icons
+- Animations
+- Hover states
+- Transitions
+- Shadows
+- Borders
+- Gradients
+- Responsive behavior
+
+Everything should feel like it belongs to the same design system.
+
+---
+
+# 🏠 HERO SECTION
+
+Create a powerful premium hero section.
+
+It should immediately communicate:
+
+- Who I am
+- What I do
+- My developer identity
+- My skills / specialization
+- A clear call-to-action
+
+The hero should be visually impressive without becoming cluttered.
+
+Use sophisticated typography.
+
+Add subtle visual elements such as:
+
+- Soft blue/pink glow
+- Abstract shapes
+- Fine grid details
+- Minimal particles
+- Glass elements
+- Subtle animated elements
+
+But keep everything restrained.
+
+NO cheesy hacker effects.
+
+NO excessive neon.
+
+NO Matrix-style animations.
+
+NO giant unnecessary 3D objects.
+
+The result should look premium, not like a gaming website.
+
+---
+
+# 🧭 NAVBAR
+
+Create a highly polished navigation bar.
+
+It should include the appropriate existing navigation items from the current site.
+
+Make it:
+
+- Minimal
+- Clean
+- Sticky
+- Responsive
+- Elegant
+
+On desktop, it should feel like a premium SaaS/product website.
+
+On mobile, create a beautiful modern mobile navigation.
+
+Include the:
+
+### Light/Dark mode toggle
+
+with a polished animated transition.
+
+---
+
+# 📱 RESPONSIVE DESIGN
+
+The entire website must be properly responsive.
+
+Test and optimize for:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+- Small mobile screens
+
+Nothing should overflow.
+
+No broken layouts.
+
+No horizontal scrolling.
+
+No tiny text.
+
+No overlapping elements.
+
+No awkward spacing.
+
+---
+
+# 💼 PROJECTS SECTION
+
+Preserve ALL existing projects and project information from the current portfolio.
+
+Do not remove projects.
+
+Do not replace real project information with fake projects.
+
+Redesign the project cards completely.
+
+Make them look premium.
+
+Each project card can include:
+
+- Project image
+- Project name
+- Description
+- Technologies
+- Category
+- Live demo
+- GitHub
+- Relevant links
+
+Use elegant hover interactions.
+
+For example:
+
+Image subtly scales.
+
+Card slightly lifts.
+
+Border/glow changes subtly.
+
+Buttons become more prominent.
+
+Keep animations smooth and fast.
+
+---
+
+# 🧑‍💻 SKILLS / TECHNOLOGIES
+
+Preserve all existing skills and technologies.
+
+Redesign this section so it looks professional.
+
+Avoid the typical:
+
+"HTML 90%"
+"CSS 95%"
+"JavaScript 85%"
+
+progress-bar style unless the current content specifically requires it.
+
+Instead use elegant technology cards, badges, icons, or categorized groups.
+
+Organize technologies logically.
+
+For example:
+
+Frontend
+Backend
+Database
+Tools
+Deployment
+AI / APIs
+etc.
+
+Only use categories that make sense based on the existing content.
+
+---
+
+# 👩‍💻 ABOUT SECTION
+
+Preserve the existing About content.
+
+Do NOT rewrite my identity or invent achievements.
+
+Improve the visual presentation.
+
+Create a sophisticated layout with:
+
+- Strong typography
+- Clean information hierarchy
+- Personal branding
+- Subtle visual elements
+- Professional spacing
+
+Make the section feel personal rather than like a generic resume.
+
+---
+
+# 🏆 EXPERIENCE / ACHIEVEMENTS / OTHER SECTIONS
+
+If the current website contains:
+
+- Experience
+- Education
+- Certifications
+- Achievements
+- Services
+- Testimonials
+- Statistics
+- Timeline
+- etc.
+
+KEEP THEM.
+
+Do not remove existing content simply because the new design doesn't have a place for it.
+
+Redesign each section so it fits naturally into the new design system.
+
+---
+
+# 📞 CONTACT SECTION
+
+Preserve all existing contact information and links.
+
+Create a premium contact section.
+
+It should make contacting me extremely easy.
+
+Use appropriate existing:
+
+- Email
+- Social links
+- GitHub
+- LinkedIn
+- Other portfolio links
+
+Do not invent contact information.
+
+Create a beautiful CTA around the contact section.
+
+---
+
+# 🦶 FOOTER
+
+Create a clean premium footer.
+
+It should include the relevant existing:
+
+- Name / branding
+- Navigation
+- Social links
+- Copyright
+- Contact information where appropriate
+
+Keep it minimal.
+
+---
+
+# ✨ ANIMATIONS
+
+Use animations intelligently.
+
+I want:
+
+- Smooth page entrance
+- Scroll reveal
+- Subtle card animations
+- Button hover animations
+- Navigation transitions
+- Theme transition
+- Image hover effects
+- Smooth scrolling
+
+Animations should be:
+
+### FAST + SMOOTH + PREMIUM
+
+Avoid:
+
+- Slow animations
+- Excessive bouncing
+- Huge movements
+- Random particles everywhere
+- Distracting effects
+
+The website should feel responsive.
+
+---
+
+# 🎭 MICRO-INTERACTIONS
+
+Add small details that make the site feel expensive.
+
+Examples:
+
+- Buttons subtly react to hover
+- Cards lift slightly
+- Links have elegant underline animations
+- Icons animate subtly
+- Theme toggle has a smooth transition
+- Images have subtle movement
+- Navigation state changes smoothly
+
+These details matter.
+
+---
+
+# 🪟 GLASSMORPHISM
+
+Glassmorphism can be used, but VERY carefully.
+
+Use it only where it improves the design.
+
+Examples:
+
+- Navbar
+- Small floating cards
+- Badges
+- Decorative elements
+
+Do not turn every single section into a glass card.
+
+The site must remain clean.
+
+---
+
+# 🔤 TYPOGRAPHY
+
+Use a modern professional font system.
+
+Typography should have:
+
+- Strong hero heading
+- Clear section headings
+- Readable body text
+- Proper hierarchy
+- Excellent spacing
+
+Do not use overly decorative fonts.
+
+The typography should feel like a premium technology/product company.
+
+---
+
+# 🖼️ IMAGES
+
+KEEP all existing relevant images and project images.
+
+Do not replace actual project images with random stock images.
+
+Optimize image rendering so the portfolio loads quickly.
+
+Use:
+
+- Proper image sizing
+- Lazy loading where appropriate
+- Modern image formats where possible
+- Responsive image dimensions
+- Prevent layout shifts
+
+The website should feel fast.
+
+---
+
+# ⚡ PERFORMANCE
+
+This is extremely important.
+
+Do NOT sacrifice performance for animations.
+
+Optimize:
+
+- JavaScript
+- CSS
+- Images
+- Fonts
+- Animations
+- Components
+- Loading behavior
+
+Avoid unnecessary libraries.
+
+Do not add huge dependencies just for small visual effects.
+
+The final site should load quickly.
+
+---
+
+# 🧹 CLEAN CODE
+
+While redesigning the site:
+
+- Keep the code organized
+- Remove unnecessary duplicated CSS
+- Remove unused components
+- Remove unused dependencies
+- Keep components reusable
+- Keep naming clean
+- Keep responsive styles organized
+- Keep the project maintainable
+
+Do not destroy existing functionality.
+
+---
+
+# 🚫 VERY IMPORTANT: DO NOT DO THESE THINGS
+
+DO NOT:
+
+❌ Delete existing portfolio content
+
+❌ Delete existing projects
+
+❌ Replace my information with placeholder text
+
+❌ Invent fake experience
+
+❌ Invent fake achievements
+
+❌ Remove useful links
+
+❌ Replace everything with generic Lorem Ipsum
+
+❌ Simply recolor the existing website
+
+❌ Keep the old visual structure and only change CSS
+
+❌ Make it overly dark
+
+❌ Use purple as the primary accent
+
+❌ Make it look like a gaming website
+
+❌ Add excessive neon
+
+❌ Add unnecessary 3D elements
+
+❌ Add cheesy hacker animations
+
+❌ Add excessive particles
+
+❌ Make every section a glass card
+
+❌ Make animations slow
+
+❌ Break mobile responsiveness
+
+❌ Break existing functionality
+
+---
+
+# 🔥 MOST IMPORTANT REQUIREMENT
+
+I want you to think of this as a complete **UI/UX redesign and rebuild**.
+
+The content is the source of truth.
+
+The existing website tells you:
+
+### WHAT information must remain.
+
+The redesign should completely rethink:
+
+### HOW that information is presented.
+
+So:
+
+**CONTENT = PRESERVE**
+
+**DESIGN = REBUILD**
+
+**UX = IMPROVE**
+
+**PERFORMANCE = IMPROVE**
+
+---
+
+# 🏆 FINAL QUALITY BAR
+
+When finished, compare the result mentally against high-end modern portfolios from:
+
+- Professional software engineers
+- Product designers
+- Creative developers
+- Startup founders
+- Premium digital agencies
+
+The result should feel like something someone would proudly put on their domain and send to recruiters, clients, companies, and collaborators.
+
+It should NOT feel like:
+
+"AI generated portfolio template #8472."
+
+It should feel custom-made.
+
+---
+
+# 🔍 FINAL AUDIT
+
+Before considering the work complete, inspect the entire website.
+
+Check:
+
+### CONTENT
+- Is every important piece of existing content still present?
+- Are all projects preserved?
+- Are all links preserved?
+- Is personal information preserved correctly?
+
+### DESIGN
+- Does the entire site look redesigned from scratch?
+- Is the white + pink + blue theme consistent?
+- Does it look premium?
+- Does it look professional?
+
+### LIGHT MODE
+- Is it clean?
+- Is contrast good?
+- Are accents tasteful?
+
+### DARK MODE
+- Is it elegant?
+- Is it readable?
+- Does it feel intentionally designed rather than inverted?
+
+### RESPONSIVENESS
+- Desktop
+- Tablet
+- Mobile
+
+### PERFORMANCE
+- Fast loading
+- Optimized images
+- No unnecessary animations
+- No unnecessary dependencies
+
+### FUNCTIONALITY
+- All buttons work
+- All links work
+- Navigation works
+- Theme switch works
+- Forms work if present
+- Project links work
+- Mobile menu works
+
+---
+
+## FINAL INSTRUCTION
+
+Do not stop after making a basic redesign.
+
+Keep refining the UI until it genuinely looks like a **premium professional developer portfolio**.
+
+Use:
+
+https://tanudevworks.vercel.app
+
+for the EXISTING CONTENT.
+
+Use:
+
+https://tanu-developer.vercel.app
+
+for COLOR / STYLE REFERENCE ONLY.
+
+### Again:
+
+**DO NOT COPY THE REFERENCE WEBSITE.**
+
+Create a completely new, original, premium design using the same general white + pink + blue visual direction.
+
+Preserve my content.
+
+Rebuild the design.
+
+Make it exceptionally polished.
+
+This is a full portfolio redesign, not a simple CSS update.

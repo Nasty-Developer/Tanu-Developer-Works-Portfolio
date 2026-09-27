@@ -1,0 +1,235 @@
+## 🚨 CRITICAL DESIGN INSTRUCTION: NO GRID / CARD-HEAVY DESIGN
+
+I need you to completely stop using the typical AI-generated portfolio layout where everything becomes:
+
+- ❌ Square cards
+- ❌ Rectangular cards
+- ❌ 3-column grids everywhere
+- ❌ 4-column grids everywhere
+- ❌ Repeated boxes
+- ❌ Everything inside a bordered container
+- ❌ Section after section of identical cards
+- ❌ Dashboard-like layouts
+- ❌ “Card, card, card, card” everywhere
+
+THIS IS VERY IMPORTANT.
+
+I **DO NOT LIKE GRID-HEAVY WEBSITES**.
+
+Do not automatically turn every piece of content into a card just because it is convenient to implement.
+
+The website should feel like a **premium editorial / luxury creative portfolio**, not a dashboard or SaaS admin panel.
+
+---
+
+# 🎨 USE COMPOSITION, NOT GRIDS
+
+Instead of repeatedly using grids, use sophisticated layouts such as:
+
+- Large typography
+- Asymmetrical compositions
+- Full-width sections
+- Split-screen layouts
+- Overlapping elements
+- Floating elements
+- Editorial layouts
+- Large visual areas
+- Horizontal project showcases
+- Vertical storytelling
+- Generous whitespace
+- Layered imagery
+- Text positioned beside or over visuals
+- Carefully placed accent elements
+- Large project previews
+- Alternating left/right sections
+
+The page should have **visual rhythm**.
+
+Every section should NOT look structurally identical.
+
+---
+
+# 💎 PREMIUM PORTFOLIO FEEL
+
+I want the website to feel closer to:
+
+**Luxury creative agency + premium designer portfolio + elite developer portfolio**
+
+NOT:
+
+**SaaS dashboard + template website + AI-generated portfolio.**
+
+There should be breathing room.
+
+There should be moments where the screen is intentionally simple.
+
+Do not be afraid of empty space.
+
+Whitespace is part of the design.
+
+---
+
+# 🖼️ PROJECTS MUST NOT BE A BORING GRID
+
+This is especially important for the Projects section.
+
+DO NOT make:
+
+[ Project 1 ] [ Project 2 ] [ Project 3 ]
+
+with three identical square cards.
+
+Instead, create a premium project showcase.
+
+For example:
+
+### Project 01
+A large project preview occupying a major portion of the screen.
+
+Large project image.
+
+Project title.
+
+Short description.
+
+Technology information.
+
+Live website / GitHub actions.
+
+Then:
+
+### Project 02
+
+Use a different visual composition.
+
+Then:
+
+### Project 03
+
+Again, another composition.
+
+Projects can alternate:
+
+**image left → content right**
+
+then
+
+**content left → image right**
+
+then
+
+**large full-width visual → information underneath**
+
+This will make the portfolio feel curated rather than generated.
+
+---
+
+# 🧱 STOP MAKING EVERYTHING A BOX
+
+Not every element needs:
+
+`border-radius + border + background + shadow`
+
+Please avoid this pattern everywhere.
+
+Use borders only when they have a design purpose.
+
+Use typography, whitespace, positioning, lines, subtle backgrounds, imagery, and hierarchy to separate content.
+
+---
+
+# ✨ USE SHAPES SPARINGLY
+
+I do NOT want the website filled with:
+
+- Squares
+- Rounded rectangles
+- Pills
+- Floating boxes
+- Random circles
+- Random decorative blobs
+
+Use decorative elements very selectively.
+
+If every section has floating shapes, the design immediately starts looking like an AI template.
+
+---
+
+# 📐 VARY THE LAYOUT
+
+Every major section should have its own composition.
+
+For example:
+
+HERO
+→ cinematic / asymmetric
+
+ABOUT
+→ editorial split layout
+
+PROJECTS
+→ large visual showcase
+
+SKILLS
+→ elegant typography / flowing categories
+
+EXPERIENCE
+→ vertical timeline or editorial layout
+
+SERVICES
+→ typography-led layout
+
+CONTACT
+→ dramatic full-width CTA
+
+Do NOT use the same card grid for all of them.
+
+---
+
+# 🧠 DESIGNER'S RULE
+
+Before creating a card, ask:
+
+**“Does this information actually need to be inside a card?”**
+
+If the answer is no:
+
+DO NOT CREATE A CARD.
+
+Before creating a grid, ask:
+
+**“Would an editorial or asymmetric layout communicate this better?”**
+
+If yes:
+
+USE THE EDITORIAL LAYOUT.
+
+---
+
+# 🎯 FINAL VISUAL GOAL
+
+When someone opens the website, they should think:
+
+> “This looks like a professionally art-directed portfolio.”
+
+NOT:
+
+> “This looks like an AI generated website with a bunch of cards.”
+
+The design should feel intentional, spacious, sophisticated, premium and original.
+
+### MOST IMPORTANT:
+
+**NO GRID EVERYWHERE.**
+
+**NO CARD EVERYWHERE.**
+
+**NO SQUARE EVERYWHERE.**
+
+**NO DASHBOARD LOOK.**
+
+**NO REPETITIVE 3-COLUMN SECTIONS.**
+
+Use **composition, typography, imagery, whitespace, asymmetry and storytelling** to create the layout.
+
+The website should feel **luxurious, creative and professionally art-directed.**

@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-mono);
+  --radius-lg: 1.25rem;
+  --radius-md: .8rem;
+  --radius-sm: .45rem;
+}
+
+:root {
+  --background: 35 35% 97%;
+  --foreground: 222 27% 13%;
+  --border: 220 18% 87%;
+  --input: 220 18% 87%;
+  --ring: 218 84% 52%;
+  --card: 35 40% 99%;
+  --card-foreground: 222 27% 13%;
+  --primary: 222 27% 13%;
+  --primary-foreground: 35 35% 97%;
+  --secondary: 210 45% 94%;
+  --secondary-foreground: 222 27% 13%;
+  --muted: 220 12% 54%;
+  --muted-foreground: 220 12% 44%;
+  --accent: 340 82% 70%;
+  --accent-foreground: 222 27% 13%;
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-mono: 'DM Mono', monospace;
+  --display-font: 'Manrope', sans-serif;
+  --blue: #3b82f6;
+  --pink: #ee86a4;
+  --paper: #f8f7f3;
+  --line: rgba(27, 37, 58, .13);
+  --shadow-soft: 0 18px 60px rgba(30, 42, 67, .08);
+  --shadow-float: 0 24px 80px rgba(30, 42, 67, .14);
+}
+
+.dark {
+  --background: 222 22% 9%;
+  --foreground: 35 30% 95%;
+  --border: 220 16% 22%;
+  --input: 220 16% 24%;
+  --ring: 214 87% 65%;
+  --card: 222 20% 12%;
+  --card-foreground: 35 30% 95%;
+  --primary: 35 30% 95%;
+  --primary-foreground: 222 22% 9%;
+  --secondary: 220 17% 18%;
+  --secondary-foreground: 35 30% 95%;
+  --muted: 220 11% 62%;
+  --muted-foreground: 220 11% 67%;
+  --accent: 340 74% 72%;
+  --accent-foreground: 222 22% 9%;
+  --blue: #6da2ff;
+  --pink: #ef91ae;
+  --paper: #10141d;
+  --line: rgba(238, 242, 252, .14);
+  --shadow-soft: 0 18px 60px rgba(0, 0, 0, .18);
+  --shadow-float: 0 24px 80px rgba(0, 0, 0, .3);
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    margin: 0;
+    min-width: 320px;
+    background: hsl(var(--background));
+    transition: background-color .35s ease, color .35s ease;
+  }
+  ::selection { background: color-mix(in srgb, var(--pink) 42%, transparent); }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--display-font); }
+  .font-mono-custom { font-family: var(--app-font-mono); }
+  .text-balance { text-wrap: balance; }
+  .section-shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+}
+
+.site-shell { overflow: clip; }
+.reveal { animation: reveal .7s cubic-bezier(.22, 1, .36, 1) both; }
+.reveal-delay-1 { animation-delay: .1s; }
+.reveal-delay-2 { animation-delay: .18s; }
+.reveal-delay-3 { animation-delay: .26s; }
+@keyframes reveal { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+.orbit { animation: spin 18s linear infinite; transform-origin: center; }
+.button-arrow { transition: transform .25s ease; }
+button:hover .button-arrow, a:hover .button-arrow { transform: translate(3px, -3px); }
+.project-art { transition: transform .55s cubic-bezier(.22,1,.36,1), filter .55s ease; }
+.project-story { position: relative; border-top: 1px solid var(--line); padding: 76px 0 88px; }
+.project-story:last-child { border-bottom: 1px solid var(--line); }
+.project-story-split, .project-story-reverse { display: flex; align-items: center; gap: clamp(2rem, 8vw, 9rem); }
+.project-story-reverse { flex-direction: row-reverse; }
+.project-story-visual { flex: 1.15 1 0; min-width: 0; }
+.project-story-copy { flex: .85 1 0; min-width: 260px; }
+.project-story-wide .project-story-visual { width: min(100%, 1050px); margin-inline: auto; }
+.project-story-wide .project-story-visual .project-art { min-height: 470px; }
+.project-story-wide .project-story-copy { display: grid; grid-template-columns: 1fr 1.25fr; column-gap: 4rem; align-items: start; padding-top: 28px; }
+.project-story-wide .project-story-copy > .flex:first-child { grid-column: 1 / -1; }
+.project-story-wide .project-story-copy > h3 { grid-column: 1; }
+.project-story-wide .project-story-copy > p { grid-column: 2; grid-row: 2; }
+.project-story-wide .project-story-copy > .flex:nth-of-type(2) { grid-column: 1; grid-row: 3; }
+.project-story-wide .project-story-copy > .flex:nth-of-type(3) { grid-column: 2; grid-row: 3; justify-self: end; }
+.project-story:hover .project-art { transform: scale(1.018); filter: saturate(1.08); }
+.contact-form input, .contact-form textarea { border-radius: 0; }
+@media (max-width: 767px) {
+  .project-story { padding: 48px 0 58px; }
+  .project-story-split, .project-story-reverse { display: block; }
+  .project-story-copy { padding-top: 28px; }
+  .project-story-wide .project-story-visual .project-art { min-height: 340px; }
+  .project-story-wide .project-story-copy { display: block; }
+  .project-story-wide .project-story-copy > p { margin-top: 1rem; }
+  .project-story-wide .project-story-copy > button { margin-top: 2.5rem; justify-self: auto; }
+}
+.underlined { position: relative; }
+.underlined::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -3px; height: 1px; background: currentColor; transition: right .25s ease; }
+.underlined:hover::after { right: 0; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
