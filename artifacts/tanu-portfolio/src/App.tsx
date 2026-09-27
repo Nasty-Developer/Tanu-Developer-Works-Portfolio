@@ -432,6 +432,13 @@ function Home() {
           </div>
         </section>
 
+        <section id="work" className="scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
+          <div className="section-shell">
+            <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Selected work</span><h2 className="mt-5 font-display text-5xl font-bold tracking-[-.08em] md:text-7xl">Made to be used.</h2></div><p className="max-w-[250px] text-sm leading-6 text-muted-foreground">A few digital products and experiences shaped with care.</p></div>
+            <div>{projects.map((project) => <ProjectCard key={project.number} project={project} />)}</div>
+          </div>
+        </section>
+
         <section id="about" className="scroll-mt-28 border-y border-[var(--line)] bg-secondary/45 px-5 py-24 md:px-8 md:py-32">
           <div className="section-shell about-shell">
             <div className="about-intro">
@@ -470,13 +477,6 @@ function Home() {
               <p className="max-w-[470px] text-lg leading-8 text-muted-foreground">A flexible stack for fast feedback, durable systems, and interfaces that stay lovely when the screen gets smaller.</p>
               <div className="skill-index mt-12 max-w-[620px] border-t border-[var(--line)]">{skills.map((skill, index) => <div key={skill} className="flex items-baseline justify-between border-b border-[var(--line)] py-4 transition-colors hover:border-[var(--blue)]"><span className="font-mono-custom text-[10px] text-muted-foreground">{String(index + 1).padStart(2, '0')}</span><span className="font-display text-2xl font-semibold tracking-[-.05em] md:text-3xl">{skill}</span><span className="font-mono-custom text-[10px] uppercase tracking-[.12em] text-muted-foreground">{index < 4 ? 'interface' : index < 6 ? 'systems' : 'tooling'}</span></div>)}</div>
             </div>
-          </div>
-        </section>
-
-        <section id="work" className="scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
-          <div className="section-shell">
-            <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Selected work</span><h2 className="mt-5 font-display text-5xl font-bold tracking-[-.08em] md:text-7xl">Made to be used.</h2></div><p className="max-w-[250px] text-sm leading-6 text-muted-foreground">A few digital products and experiences shaped with care.</p></div>
-            <div>{projects.map((project) => <ProjectCard key={project.number} project={project} />)}</div>
           </div>
         </section>
 
