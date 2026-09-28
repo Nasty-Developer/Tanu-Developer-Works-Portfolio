@@ -142,7 +142,12 @@ const capabilities = [
 const skills = ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Firebase', 'Git', 'PostgreSQL', 'Node.js'];
 
 function scrollToId(id: string) {
-  document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const target = document.querySelector(id);
+  if (!target) return;
+  const headerOffset = 92;
+  const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerOffset);
+  window.scrollTo({ top, behavior: 'smooth' });
+  window.history.replaceState(null, '', id);
 }
 
 function ThemeToggle({ dark, onToggle }: { dark: boolean; onToggle: () => void }) {
@@ -169,6 +174,10 @@ function HeroVisual() {
     <div className="hero-visual" aria-label="Digital studio workspace showing websites and apps">
       <div className="hero-visual-glow hero-visual-glow-pink" />
       <div className="hero-visual-glow hero-visual-glow-blue" />
+      <div className="hero-visual-orbit hero-visual-orbit-one" />
+      <div className="hero-visual-orbit hero-visual-orbit-two" />
+      <span className="hero-visual-spark hero-visual-spark-one">✦</span>
+      <span className="hero-visual-spark hero-visual-spark-two">✦</span>
       <div className="hero-visual-frame">
         <img
           src="/hero-digital-studio.jpg"
@@ -209,15 +218,15 @@ function Header({ dark, onToggle }: { dark: boolean; onToggle: () => void }) {
   return (
     <header className="fixed left-0 right-0 top-0 z-30 px-5 pt-4 md:px-8">
       <div className="section-shell flex h-[64px] items-center justify-between rounded-full border border-[var(--line)] bg-background/82 px-4 shadow-[0_8px_35px_rgba(30,42,67,.06)] backdrop-blur-xl md:px-5">
-        <button type="button" className="group flex items-center gap-2.5" onClick={() => go('#top')} aria-label="Back to top">
+        <a href="#top" className="group flex items-center gap-2.5" onClick={(event) => { event.preventDefault(); go('#top'); }} aria-label="Back to top">
           <img src="/td-logo.png" alt="TD" className="td-logo td-logo-nav transition-transform group-hover:scale-[1.04]" />
           <span className="hidden text-sm font-semibold tracking-[-.02em] sm:block">Tanu Developer</span>
-        </button>
+        </a>
         <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
           {navItems.map((item) => (
-            <button key={item.href} type="button" onClick={() => go(item.href)} className="underlined text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground">
+            <a key={item.href} href={item.href} onClick={(event) => { event.preventDefault(); go(item.href); }} className="underlined text-[13px] font-medium text-muted-foreground transition-colors hover:text-foreground">
               {item.label}
-            </button>
+            </a>
           ))}
         </nav>
         <div className="flex items-center gap-2">
@@ -230,9 +239,9 @@ function Header({ dark, onToggle }: { dark: boolean; onToggle: () => void }) {
       {open && (
         <div className="section-shell mt-2 rounded-3xl border border-[var(--line)] bg-background/95 p-3 shadow-[var(--shadow-soft)] backdrop-blur-xl md:hidden">
           {navItems.map((item) => (
-            <button key={item.href} type="button" onClick={() => go(item.href)} className="flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-medium hover:bg-secondary">
+            <a key={item.href} href={item.href} onClick={(event) => { event.preventDefault(); go(item.href); }} className="flex w-full items-center justify-between rounded-2xl px-4 py-3 text-left text-sm font-medium hover:bg-secondary">
               {item.label}<ArrowUpRight size={15} />
-            </button>
+            </a>
           ))}
         </div>
       )}
@@ -369,7 +378,7 @@ function ProjectCard({ project }: { project: typeof projects[number] }) {
         <h3 className="mt-7 font-display text-4xl font-bold tracking-[-.07em] md:text-5xl">{project.name}</h3>
         <p className="mt-4 max-w-[390px] text-sm leading-7 text-muted-foreground">{project.description}</p>
         <div className="mt-10 flex flex-wrap items-center gap-5">
-          <button type="button" onClick={() => scrollToId('#contact')} className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.12em] text-foreground">Discuss this build <MoveUpRight size={14} className="button-arrow" /></button>
+          <a href="#contact" onClick={(event) => { event.preventDefault(); scrollToId('#contact'); }} className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[.12em] text-foreground">Discuss this build <MoveUpRight size={14} className="button-arrow" /></a>
           <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="visit-website flex items-center gap-2 rounded-full bg-foreground px-4 py-2.5 text-xs font-semibold uppercase tracking-[.1em] text-background transition-transform hover:-translate-y-0.5">
             Visit Website <ExternalLink size={13} className="button-arrow" />
           </a>
@@ -453,7 +462,7 @@ function Home() {
       <div id="top" className="site-shell min-h-[100dvh]">
       <Header dark={dark} onToggle={() => setDark(!dark)} />
       <main>
-        <section className="relative min-h-[780px] overflow-hidden px-5 pb-24 pt-36 md:px-8 md:pt-44">
+        <section className="relative overflow-hidden px-5 pb-20 pt-36 md:px-8 md:pb-20 md:pt-44">
           <div className="pointer-events-none absolute left-[56%] top-32 h-[440px] w-[440px] rounded-full bg-[var(--pink)]/10 blur-3xl" />
           <div className="pointer-events-none absolute right-[-80px] top-56 h-[380px] w-[380px] rounded-full bg-[var(--blue)]/10 blur-3xl" />
           <div className="section-shell relative hero-shell">
@@ -467,9 +476,9 @@ function Home() {
                 <h1 className="font-display text-[clamp(3.5rem,9.5vw,8.8rem)] font-extrabold leading-[.91] tracking-[-.095em] reveal reveal-delay-1">Interfaces<br /><span className="text-[var(--blue)]">with intent.</span></h1>
                 <div className="mt-10 flex max-w-[650px] flex-col justify-between gap-8 sm:flex-row sm:items-end reveal reveal-delay-2">
                   <p className="max-w-[390px] text-[17px] leading-7 text-muted-foreground">I’m Tanu Tapase — a full-stack developer building digital experiences that feel clear, capable, and worth remembering.</p>
-                  <button type="button" onClick={() => scrollToId('#work')} className="group flex w-fit items-center gap-3 rounded-full bg-foreground px-5 py-3.5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
+                  <a href="#work" onClick={(event) => { event.preventDefault(); scrollToId('#work'); }} className="group flex w-fit items-center gap-3 rounded-full bg-foreground px-5 py-3.5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
                     Explore selected work <ArrowDownRight size={17} className="button-arrow" />
-                  </button>
+                  </a>
                 </div>
               </div>
               <HeroVisual />
@@ -491,12 +500,8 @@ function Home() {
           </div>
         </section>
 
-        <section id="about" className="scroll-mt-28 border-y border-[var(--line)] bg-secondary/45 px-5 py-24 md:px-8 md:py-32">
+        <section id="about" className="scroll-mt-28 border-y border-[var(--line)] bg-secondary/45 px-5 py-14 md:px-8 md:py-20">
           <div className="section-shell about-shell">
-            <div className="about-intro">
-              <p className="about-phrase">⌁ Same girl.<br />Bigger dreams.</p>
-              <span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">About Me</span>
-            </div>
             <div className="about-layout">
               <div className="about-photo-wrap">
                 <div className="about-photo-glow" />
@@ -566,7 +571,7 @@ function Home() {
         </section>
       </main>
       <footer className="border-t border-[var(--line)] px-5 py-10 md:px-8">
-        <div className="section-shell flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><div className="flex items-center gap-2.5"><img src="/td-logo.png" alt="TD" className="td-logo td-logo-footer" /><span className="text-sm font-semibold tracking-[-.02em]">Tanu Developer</span></div><p className="mt-4 max-w-[270px] text-xs leading-5 text-muted-foreground">Independent full-stack developer and digital creator in Mumbai, India.</p></div><div className="flex flex-wrap items-center gap-5 text-xs text-muted-foreground"><a className="underlined" href="https://www.instagram.com/tanuuuyyyy?igsh=cDAya3h0YnpxcmFq" target="_blank" rel="noreferrer"><Instagram size={15} /></a><a className="underlined" href="https://github.com/tanudevworks-web" target="_blank" rel="noreferrer"><Github size={15} /></a><a className="underlined" href="https://www.linkedin.com/in/tanu-tapase-461405411" target="_blank" rel="noreferrer"><Linkedin size={15} /></a><span className="ml-2 border-l border-[var(--line)] pl-5">© 2025 Tanu Tapase</span><button type="button" onClick={() => scrollToId('#top')} className="flex items-center gap-1 font-medium text-foreground">Back to top <ChevronDown size={14} className="rotate-180" /></button></div></div>
+        <div className="section-shell flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><div className="flex items-center gap-2.5"><img src="/td-logo.png" alt="TD" className="td-logo td-logo-footer" /><span className="text-sm font-semibold tracking-[-.02em]">Tanu Developer</span></div><p className="mt-4 max-w-[270px] text-xs leading-5 text-muted-foreground">Independent full-stack developer and digital creator in Mumbai, India.</p></div><div className="flex flex-wrap items-center gap-5 text-xs text-muted-foreground"><a className="underlined" href="https://www.instagram.com/tanuuuyyyy?igsh=cDAya3h0YnpxcmFq" target="_blank" rel="noreferrer"><Instagram size={15} /></a><a className="underlined" href="https://github.com/tanudevworks-web" target="_blank" rel="noreferrer"><Github size={15} /></a><a className="underlined" href="https://www.linkedin.com/in/tanu-tapase-461405411" target="_blank" rel="noreferrer"><Linkedin size={15} /></a><span className="ml-2 border-l border-[var(--line)] pl-5">© 2025 Tanu Tapase</span><a href="#top" onClick={(event) => { event.preventDefault(); scrollToId('#top'); }} className="flex items-center gap-1 font-medium text-foreground">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></div>
       </footer>
       {menuToast && <div className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-[var(--line)] bg-foreground px-4 py-3 text-xs font-medium text-background shadow-[var(--shadow-float)]"><Check size={14} className="text-[var(--pink)]" /> Your enquiry is ready — email Tanu directly to send it.</div>}
       </div>
