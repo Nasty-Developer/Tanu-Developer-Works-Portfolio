@@ -462,7 +462,7 @@ function Home() {
       <div id="top" className="site-shell min-h-[100dvh]">
       <Header dark={dark} onToggle={() => setDark(!dark)} />
       <main>
-        <section className="relative overflow-hidden px-5 pb-20 pt-36 md:px-8 md:pb-20 md:pt-44">
+        <section className="relative overflow-hidden px-5 pb-0 pt-36 md:px-8 md:pb-0 md:pt-44">
           <div className="pointer-events-none absolute left-[56%] top-32 h-[440px] w-[440px] rounded-full bg-[var(--pink)]/10 blur-3xl" />
           <div className="pointer-events-none absolute right-[-80px] top-56 h-[380px] w-[380px] rounded-full bg-[var(--blue)]/10 blur-3xl" />
           <div className="section-shell relative hero-shell">
@@ -493,7 +493,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="work" className="scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
+        <section id="work" className="scroll-mt-28 px-5 pb-24 pt-0 md:px-8 md:pb-32 md:pt-0">
           <div className="section-shell">
             <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Selected work</span><h2 className="mt-5 font-display text-5xl font-bold tracking-[-.08em] md:text-7xl">Made to be used.</h2></div><p className="max-w-[250px] text-sm leading-6 text-muted-foreground">A few digital products and experiences shaped with care.</p></div>
             <div>{projects.map((project) => <ProjectCard key={project.number} project={project} />)}</div>
