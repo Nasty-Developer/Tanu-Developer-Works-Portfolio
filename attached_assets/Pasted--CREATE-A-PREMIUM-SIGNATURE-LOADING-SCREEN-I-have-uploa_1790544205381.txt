@@ -1,0 +1,366 @@
+## 🚨 CREATE A PREMIUM SIGNATURE LOADING SCREEN
+
+I have uploaded my official **TD logo**.
+
+Use this EXACT uploaded logo as the central brand element of the website loading screen.
+
+I want a loading experience that feels **completely custom, premium, cinematic and memorable**.
+
+NOT a generic website loader.
+
+NOT a simple spinner.
+
+NOT a progress bar with a percentage.
+
+I want a loading screen that feels like a real high-end creative developer portfolio.
+
+---
+
+# 🎨 CORE CONCEPT
+
+The loading screen should introduce:
+
+## Tanu Developer
+
+using my official TD logo.
+
+The experience should feel like the website is **opening / being revealed**, rather than simply "waiting for the page to load."
+
+Think:
+
+**Luxury digital studio + premium developer portfolio + cinematic interface**
+
+---
+
+# 🖼️ USE MY TD LOGO
+
+Use the uploaded TD logo exactly.
+
+Do NOT:
+
+❌ Redesign the logo
+❌ Change its shape
+❌ Replace it
+❌ Generate another logo
+❌ Turn it into a generic icon
+❌ Put it inside a random square
+❌ Distort the proportions
+
+Preserve the beautiful:
+
+**Blue + Pink gradient**
+
+of the logo.
+
+---
+
+# ✨ LOADING EXPERIENCE
+
+Create a sophisticated animation around the logo.
+
+Suggested sequence:
+
+### PHASE 01 — INTRO
+
+Start with an extremely clean background.
+
+The TD logo is initially:
+
+- Very subtle
+- Slightly blurred
+- Low opacity
+
+Then gradually becomes visible.
+
+---
+
+### PHASE 02 — LOGO REVEAL
+
+The TD logo smoothly comes into focus.
+
+Use a subtle:
+
+- Scale animation
+- Opacity transition
+- Soft glow
+- Blur-to-sharp transition
+
+The animation should feel smooth and expensive.
+
+NOT dramatic or cheesy.
+
+---
+
+### PHASE 03 — LIGHT MOVEMENT
+
+Once the logo is visible, create an extremely subtle blue/pink light movement around it.
+
+For example:
+
+A soft blue glow gently passes across one side.
+
+A soft pink glow follows.
+
+The logo itself remains unchanged.
+
+This should create a feeling of energy and technology.
+
+---
+
+### PHASE 04 — BRAND REVEAL
+
+After the logo settles, reveal:
+
+# Tanu Developer
+
+underneath or beside it.
+
+Use elegant typography.
+
+Keep it minimal.
+
+No huge paragraph.
+
+No unnecessary information.
+
+---
+
+### PHASE 05 — TRANSITION INTO WEBSITE
+
+Once the website is ready, the loading screen should transition beautifully into the actual portfolio.
+
+For example:
+
+The logo can subtly move upward/fade away while the Hero content smoothly appears.
+
+OR:
+
+The loading screen can dissolve into the Hero background.
+
+The transition should feel continuous.
+
+There should NOT be a sudden flash from the loader to the website.
+
+---
+
+# 🎬 MAKE IT FEEL CINEMATIC
+
+I want the loading experience to feel like:
+
+**The portfolio is being unveiled.**
+
+Use:
+
+- Smooth easing
+- Layered opacity
+- Subtle blur
+- Soft pink/blue atmospheric lighting
+- Elegant movement
+- Carefully timed transitions
+
+Do NOT overdo it.
+
+---
+
+# 🚫 ABSOLUTELY NO GENERIC LOADER
+
+Do NOT use:
+
+❌ Circular spinner
+
+❌ Rotating ring
+
+❌ Loading dots
+
+❌ "Loading..."
+
+❌ 0% → 100%
+
+❌ Generic progress bar
+
+❌ Hourglass
+
+❌ Skeleton screen as the main loading experience
+
+❌ Random bouncing logo
+
+❌ Excessive particles
+
+❌ Flashing neon
+
+❌ Cyberpunk animation
+
+❌ Gaming-style loading animation
+
+The logo itself should be the hero of the loading experience.
+
+---
+
+# 🎨 BACKGROUND
+
+### LIGHT MODE
+
+Use:
+
+- Warm white / clean white
+- Extremely subtle pink atmospheric glow
+- Extremely subtle blue atmospheric glow
+- Large soft blurred gradients
+- Plenty of negative space
+
+### DARK MODE
+
+Use:
+
+- Deep charcoal / near-black
+- Soft blue atmospheric glow
+- Soft pink atmospheric glow
+- Very subtle ambient lighting
+
+The loader must automatically respect the selected website theme.
+
+---
+
+# 💎 PREMIUM DETAIL
+
+Add extremely subtle visual details around the logo if they improve the experience.
+
+For example:
+
+- A thin light sweep
+- Soft radial glow
+- Very subtle floating particles
+- Minimal geometric light
+- Fine animated gradient
+- Tiny ambient light movement
+
+BUT:
+
+These should be barely noticeable.
+
+The goal is:
+
+### sophisticated
+
+NOT:
+
+### flashy
+
+---
+
+# ⏱️ PERFORMANCE
+
+This is VERY important.
+
+The loading screen must NEVER make the website feel slower.
+
+Only show the loader while the initial website resources are actually loading.
+
+Do NOT create an artificial 5–10 second delay just for the animation.
+
+If the website loads quickly, the animation should finish quickly.
+
+Use a smooth minimum transition if necessary, but prioritize actual loading performance.
+
+---
+
+# 📱 MOBILE
+
+The loading screen must work beautifully on mobile.
+
+The TD logo should:
+
+- Remain centered
+- Maintain aspect ratio
+- Scale appropriately
+- Never overflow
+- Never become pixelated
+
+The animation should remain smooth on lower-powered phones.
+
+Respect:
+
+`prefers-reduced-motion`
+
+and provide a simpler transition for users who have reduced motion enabled.
+
+---
+
+# 🧠 BRANDING
+
+The loader should establish the brand:
+
+## TD
+
+↓
+
+## Tanu Developer
+
+Then reveal the actual portfolio.
+
+Do NOT show:
+
+**Tanu Developer Works**
+
+The brand is:
+
+# Tanu Developer
+
+---
+
+# 🔥 FINAL VISUAL IDEA
+
+Imagine opening the website.
+
+The screen starts completely clean.
+
+A faint blue/pink atmospheric glow appears.
+
+The TD logo slowly emerges from the softness.
+
+The blue and pink gradient becomes crisp.
+
+A subtle light sweep moves across it.
+
+"Tanu Developer" quietly appears.
+
+Then the entire loading layer smoothly dissolves.
+
+The Hero appears underneath.
+
+It should feel like:
+
+### "This website has a brand."
+
+Not:
+
+### "Please wait while my JavaScript loads."
+
+😭
+
+---
+
+# 🚨 FINAL REQUIREMENTS
+
+✓ Use my uploaded TD logo  
+✓ Keep the logo exactly as provided  
+✓ Blue + pink gradient stays unchanged  
+✓ Create a custom cinematic loading experience  
+✓ No generic spinner  
+✓ No percentage loader  
+✓ No generic progress bar  
+✓ No "Loading..." text  
+✓ Smooth logo reveal  
+✓ Subtle blue/pink atmospheric lighting  
+✓ Reveal "Tanu Developer"  
+✓ Smooth transition into Hero  
+✓ Light mode supported  
+✓ Dark mode supported  
+✓ Mobile responsive  
+✓ Respect reduced-motion preferences  
+✓ Do not artificially delay page loading  
+✓ Optimize animation performance  
+✓ Keep the experience minimal and premium  
+✓ Do not bring back "Tanu Developer Works"
+
+The final loading screen should feel like a **signature part of the Tanu Developer brand**, not a component downloaded from a UI library.

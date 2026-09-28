@@ -186,6 +186,19 @@ function HeroVisual() {
   );
 }
 
+function SignatureLoader({ exiting }: { exiting: boolean }) {
+  return (
+    <div className={`signature-loader ${exiting ? 'signature-loader-exit' : ''}`} aria-hidden={exiting}>
+      <div className="signature-loader-glow signature-loader-glow-blue" />
+      <div className="signature-loader-glow signature-loader-glow-pink" />
+      <div className="signature-loader-content">
+        <img src="/td-logo.png" alt="TD" className="signature-loader-logo" />
+        <p className="signature-loader-name">Tanu Developer</p>
+      </div>
+    </div>
+  );
+}
+
 function Header({ dark, onToggle }: { dark: boolean; onToggle: () => void }) {
   const [open, setOpen] = useState(false);
   const go = (href: string) => {
@@ -197,9 +210,7 @@ function Header({ dark, onToggle }: { dark: boolean; onToggle: () => void }) {
     <header className="fixed left-0 right-0 top-0 z-30 px-5 pt-4 md:px-8">
       <div className="section-shell flex h-[64px] items-center justify-between rounded-full border border-[var(--line)] bg-background/82 px-4 shadow-[0_8px_35px_rgba(30,42,67,.06)] backdrop-blur-xl md:px-5">
         <button type="button" className="group flex items-center gap-2.5" onClick={() => go('#top')} aria-label="Back to top">
-          <span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-foreground text-background transition-transform group-hover:rotate-6">
-            <span className="font-display text-sm font-extrabold">T.</span>
-          </span>
+          <img src="/td-logo.png" alt="TD" className="td-logo td-logo-nav transition-transform group-hover:scale-[1.04]" />
           <span className="hidden text-sm font-semibold tracking-[-.02em] sm:block">Tanu Developer</span>
         </button>
         <nav className="hidden items-center gap-7 md:flex" aria-label="Main navigation">
@@ -372,6 +383,8 @@ function Home() {
   const [dark, setDark] = useState(false);
   const [sent, setSent] = useState(false);
   const [menuToast, setMenuToast] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loaderExiting, setLoaderExiting] = useState(false);
 
   useEffect(() => {
     const stored = window.localStorage.getItem('tanu-theme');
@@ -383,6 +396,44 @@ function Home() {
     document.documentElement.classList.toggle('dark', dark);
     window.localStorage.setItem('tanu-theme', dark ? 'dark' : 'light');
   }, [dark]);
+
+  useEffect(() => {
+    let cancelled = false;
+    let exitTimer: number | undefined;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const preload = (src: string) => new Promise<void>((resolve) => {
+      const image = new Image();
+      image.onload = () => resolve();
+      image.onerror = () => resolve();
+      image.src = src;
+    });
+    const pageReady = document.readyState === 'complete'
+      ? Promise.resolve()
+      : new Promise<void>((resolve) => window.addEventListener('load', () => resolve(), { once: true }));
+
+    Promise.all([
+      pageReady,
+      preload('/td-logo.png'),
+      preload('/hero-digital-studio.jpg'),
+      preload('/tanu-portrait.png'),
+    ]).then(() => {
+      if (cancelled) return;
+      if (reducedMotion) {
+        setLoading(false);
+        return;
+      }
+      window.requestAnimationFrame(() => {
+        if (cancelled) return;
+        setLoaderExiting(true);
+        exitTimer = window.setTimeout(() => setLoading(false), 620);
+      });
+    });
+
+    return () => {
+      cancelled = true;
+      if (exitTimer) window.clearTimeout(exitTimer);
+    };
+  }, []);
 
   const submitContact = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -398,7 +449,8 @@ function Home() {
   };
 
   return (
-    <div id="top" className="site-shell min-h-[100dvh]">
+    <>
+      <div id="top" className="site-shell min-h-[100dvh]">
       <Header dark={dark} onToggle={() => setDark(!dark)} />
       <main>
         <section className="relative min-h-[780px] overflow-hidden px-5 pb-24 pt-36 md:px-8 md:pt-44">
@@ -514,10 +566,12 @@ function Home() {
         </section>
       </main>
       <footer className="border-t border-[var(--line)] px-5 py-10 md:px-8">
-        <div className="section-shell flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><div className="flex items-center gap-2.5"><span className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-foreground text-background"><span className="font-display text-sm font-extrabold">T.</span></span><span className="text-sm font-semibold tracking-[-.02em]">Tanu Developer</span></div><p className="mt-4 max-w-[270px] text-xs leading-5 text-muted-foreground">Independent full-stack developer and digital creator in Mumbai, India.</p></div><div className="flex flex-wrap items-center gap-5 text-xs text-muted-foreground"><a className="underlined" href="https://www.instagram.com/tanuuuyyyy?igsh=cDAya3h0YnpxcmFq" target="_blank" rel="noreferrer"><Instagram size={15} /></a><a className="underlined" href="https://github.com/tanudevworks-web" target="_blank" rel="noreferrer"><Github size={15} /></a><a className="underlined" href="https://www.linkedin.com/in/tanu-tapase-461405411" target="_blank" rel="noreferrer"><Linkedin size={15} /></a><span className="ml-2 border-l border-[var(--line)] pl-5">© 2025 Tanu Tapase</span><button type="button" onClick={() => scrollToId('#top')} className="flex items-center gap-1 font-medium text-foreground">Back to top <ChevronDown size={14} className="rotate-180" /></button></div></div>
+        <div className="section-shell flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><div className="flex items-center gap-2.5"><img src="/td-logo.png" alt="TD" className="td-logo td-logo-footer" /><span className="text-sm font-semibold tracking-[-.02em]">Tanu Developer</span></div><p className="mt-4 max-w-[270px] text-xs leading-5 text-muted-foreground">Independent full-stack developer and digital creator in Mumbai, India.</p></div><div className="flex flex-wrap items-center gap-5 text-xs text-muted-foreground"><a className="underlined" href="https://www.instagram.com/tanuuuyyyy?igsh=cDAya3h0YnpxcmFq" target="_blank" rel="noreferrer"><Instagram size={15} /></a><a className="underlined" href="https://github.com/tanudevworks-web" target="_blank" rel="noreferrer"><Github size={15} /></a><a className="underlined" href="https://www.linkedin.com/in/tanu-tapase-461405411" target="_blank" rel="noreferrer"><Linkedin size={15} /></a><span className="ml-2 border-l border-[var(--line)] pl-5">© 2025 Tanu Tapase</span><button type="button" onClick={() => scrollToId('#top')} className="flex items-center gap-1 font-medium text-foreground">Back to top <ChevronDown size={14} className="rotate-180" /></button></div></div>
       </footer>
       {menuToast && <div className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-[var(--line)] bg-foreground px-4 py-3 text-xs font-medium text-background shadow-[var(--shadow-float)]"><Check size={14} className="text-[var(--pink)]" /> Your enquiry is ready — email Tanu directly to send it.</div>}
-    </div>
+      </div>
+      {loading && <SignatureLoader exiting={loaderExiting} />}
+    </>
   );
 }
 
