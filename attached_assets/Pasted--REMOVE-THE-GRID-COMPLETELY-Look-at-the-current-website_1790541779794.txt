@@ -1,0 +1,120 @@
+## 🚨 REMOVE THE GRID COMPLETELY
+
+Look at the current website screenshot.
+
+The **thin square/grid lines covering the entire background are NOT wanted.**
+
+I specifically do NOT want a grid-based visual design.
+
+### REMOVE ALL OF THIS:
+
+❌ Background grid  
+❌ Square grid lines  
+❌ Repeating horizontal/vertical lines  
+❌ CSS grid-pattern backgrounds  
+❌ `linear-gradient()` patterns being used to create grids  
+❌ Blueprint-style backgrounds  
+❌ Technical graph-paper backgrounds  
+❌ Any repeating geometric line pattern across the page  
+
+The current hero background looks like graph paper.
+
+**REMOVE IT COMPLETELY.**
+
+---
+
+# 🎨 WHAT I WANT INSTEAD
+
+I want a **clean, luxurious, editorial background**.
+
+The background should mostly be:
+
+### LIGHT MODE
+- Clean warm white / soft white
+- Extremely subtle blue/pink atmospheric glow
+- Large soft blurred gradients
+- Lots of negative space
+- No visible repeating pattern
+
+### DARK MODE
+- Deep charcoal / near-black
+- Very subtle blue and pink atmospheric lighting
+- Soft radial glow
+- Clean negative space
+- No grid
+
+The background should feel like a **premium design studio / luxury portfolio**, not a developer dashboard or engineering blueprint.
+
+---
+
+# 🚫 DO NOT REPLACE THE GRID WITH ANOTHER PATTERN
+
+This is important.
+
+Do NOT remove the grid and then add:
+
+- Dots everywhere
+- Hexagons
+- Diagonal lines
+- Crosshatches
+- Noise patterns
+- Repeating circles
+- Random geometric patterns
+
+I don't want another decorative pattern.
+
+I want **clean space**.
+
+---
+
+# ✨ BACKGROUND DIRECTION
+
+Use subtle atmospheric lighting instead.
+
+For example:
+
+- A very soft pink glow behind one area
+- A very soft blue glow behind another area
+- Extremely large blurred radial gradients
+- Subtle light diffusion
+- Almost invisible ambient color
+
+The effect should only be noticeable when you look closely.
+
+The main content must remain the focus.
+
+---
+
+# 🧠 DESIGN PRINCIPLE
+
+The background should support the typography, NOT compete with it.
+
+The hero should look approximately like:
+
+**clean white space + huge typography + subtle pink/blue atmosphere**
+
+NOT:
+
+**huge typography + giant grid + decorative technical background**
+
+---
+
+# IMPORTANT
+
+The screenshot currently has a visible grid covering the entire page.
+
+### DELETE THAT DESIGN ELEMENT ENTIRELY.
+
+Do not merely reduce its opacity.
+
+Do not make the lines thinner.
+
+Do not make the grid smaller.
+
+Do not make the grid lighter.
+
+### REMOVE IT.
+
+Then rebuild the background using **clean negative space and extremely subtle pink/blue atmospheric gradients.**
+
+The final result should look **luxury, minimal, editorial, premium and sophisticated.**

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "TanuDeveloper Works Portfolio"
+description = "A premium personal portfolio and digital studio site for Tanu Tapase, showcasing selected web work, capabilities, services, and direct contact pathways for clients and collaborators."
+version = "1.0.0"
+id = "artifacts/tanu-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24864
+
+[services.development]
+run = "pnpm --filter @workspace/tanu-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/tanu-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/tanu-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24864"
+BASE_PATH = "/"

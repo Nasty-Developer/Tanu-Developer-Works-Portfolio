@@ -1,0 +1,231 @@
+## 🚨 IMPORTANT: COPY ALL PROJECT LINKS + SOCIAL LINKS FROM MY OLD WEBSITE
+
+I have an older portfolio website containing the **real links to all of my projects and social profiles**.
+
+### OLD WEBSITE / SOURCE OF TRUTH:
+https://tanudeveloper.vercel.app/
+
+This is my old **TanuDeveloper Works** portfolio.
+
+I want you to inspect this website carefully and **extract all the actual links from it**.
+
+---
+
+# 🔗 PROJECT LINKS
+
+Go through the entire old website and find **EVERY project/work listed there**.
+
+For each project:
+
+- Copy the exact project name
+- Copy the exact project description/content where relevant
+- Copy the actual Live Website / Demo URL
+- Copy the actual GitHub URL
+- Copy any other project-related URL that exists
+- Preserve the correct relationship between each project and its links
+
+### DO NOT INVENT LINKS.
+
+### DO NOT CREATE FAKE URLs.
+
+### DO NOT GUESS URLs.
+
+Only use the actual links that exist on:
+
+**https://tanudeveloper.vercel.app/**
+
+---
+
+# 💼 ADD THEM TO THE NEW WORK PAGE
+
+The new website's **Work** page should contain all of my real projects.
+
+Every project should have its correct links.
+
+For example, if an existing project has:
+
+**Live Demo → actual URL**
+
+then the new project must use that exact URL.
+
+If it has:
+
+**GitHub → actual repository**
+
+use that exact repository.
+
+Do NOT replace them with `#`, placeholder links, or fake URLs.
+
+---
+
+# 📱 SOCIAL MEDIA LINKS
+
+Also inspect the old website and collect **ALL actual social/profile links**.
+
+This includes any that are present, such as:
+
+- GitHub
+- LinkedIn
+- Instagram
+- X/Twitter
+- YouTube
+- Email
+- Other professional/social profiles
+
+Use the **exact URLs from the old website**.
+
+Add them to the appropriate locations in the redesigned website:
+
+- Navbar if appropriate
+- Hero section if appropriate
+- Contact section
+- Footer
+- Relevant social icons
+
+Do NOT invent social accounts.
+
+---
+
+# 🖼️ PROJECT IMAGES
+
+I also want proper visual images for the projects.
+
+Use the **project title/name and project description** from the old portfolio as the basis for generating/creating an appropriate project visual.
+
+For example:
+
+If the project is a:
+
+**Dental Clinic Website**
+
+the project preview should visually communicate a premium dental/medical website.
+
+If the project is:
+
+**Advertising / Printing Website**
+
+the visual should communicate printing, advertising, signage, branding, etc.
+
+If the project is:
+
+**Pharmacy Website**
+
+the visual should communicate a modern pharmacy/medical ecommerce experience.
+
+### IMPORTANT:
+
+The generated image should be a **visual representation of the actual project**, not a random stock image.
+
+---
+
+# 🎨 PROJECT VISUAL STYLE
+
+All project images should belong to the same premium visual system.
+
+They should feel:
+
+- Professional
+- Clean
+- Modern
+- High-end
+- Editorial
+- Premium
+- Consistent
+
+But each image should still visually represent its specific project.
+
+Do NOT create generic gradient rectangles.
+
+Do NOT create random abstract AI art.
+
+Do NOT use unrelated stock photography.
+
+---
+
+# 💎 WORK PAGE DESIGN
+
+Remember my previous instruction:
+
+## DO NOT MAKE THE WORK PAGE A BORING GRID.
+
+I do NOT want:
+
+**Project 1 | Project 2 | Project 3**
+
+repeated endlessly in identical cards.
+
+Instead, present the projects through a premium editorial composition.
+
+Use things such as:
+
+- Large project previews
+- Alternating layouts
+- Large typography
+- Image + content compositions
+- Full-width project showcases
+- Asymmetric layouts
+- Horizontal storytelling
+- Generous whitespace
+
+Each project should feel like an individual case-study entry.
+
+---
+
+# 🔥 VERY IMPORTANT: OLD WEBSITE = DATA SOURCE
+
+Use:
+
+### https://tanudeveloper.vercel.app/
+
+as the **source of truth for my existing project information and links**.
+
+The NEW website is the redesigned presentation.
+
+Therefore:
+
+### OLD SITE
+→ Extract content + project URLs + social URLs
+
+### NEW SITE
+→ Completely redesigned presentation
+
+Do NOT confuse these two purposes.
+
+---
+
+# 🚫 DO NOT LOSE ANYTHING
+
+Before finishing, compare the new Work page against the old website.
+
+Make sure:
+
+- Every project is present
+- Every project has the correct name
+- Every project has the correct link
+- GitHub links are preserved
+- Live demo links are preserved
+- Social links are preserved
+- No URLs were accidentally removed
+- No URLs were replaced with placeholders
+
+---
+
+# FINAL RULE
+
+**COPY THE REAL LINKS.**
+
+Do not make up anything.
+
+**GENERATE PROJECT VISUALS FROM THE ACTUAL PROJECT TITLES/CONTENT.**
+
+**KEEP THE NEW PREMIUM DESIGN.**
+
+**KEEP THE WORK PAGE.**
+
+**DO NOT TURN IT INTO A REPETITIVE GRID.**
+
+The old website is:
+
+https://tanudeveloper.vercel.app/
+
+Use it carefully as the reference for all my real project and social links.

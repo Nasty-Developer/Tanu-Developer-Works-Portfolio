@@ -1,0 +1,385 @@
+## 🚨 HERO + ABOUT SECTION — EXACT PLACEMENT
+
+I have checked the current website layout.
+
+IMPORTANT: Follow the CURRENT layout shown in the website.
+
+The current Hero section has:
+
+LEFT SIDE:
+- "WEB DEVELOPER & DIGITAL CREATOR"
+- Large "Interfaces / With intent." heading
+- Description
+- "Explore selected work" CTA
+
+RIGHT SIDE:
+There is a LARGE EMPTY VISUAL AREA.
+
+### I WANT THE AI-GENERATED HERO VISUAL EXACTLY IN THIS EMPTY RIGHT-SIDE AREA.
+
+Do NOT move the existing hero typography unnecessarily.
+
+Do NOT make the hero into a completely different layout.
+
+Use the existing left-side typography and place the new visual on the right.
+
+---
+
+# 🏠 HERO SECTION — RIGHT SIDE
+
+Create a premium AI-generated visual specifically for this empty right-side area.
+
+The visual should represent:
+
+### WEB DEVELOPMENT + DIGITAL PRODUCTS + CLIENT WORK
+
+The visitor should instantly understand:
+
+**Tanu Developer builds professional websites and web applications.**
+
+The visual should feel like a premium digital studio.
+
+---
+
+# 🖼️ HERO IMAGE CONCEPT
+
+Create a sophisticated visual showing a modern digital workspace / website-building environment.
+
+Possible elements:
+
+- Premium laptop or large desktop display
+- Beautiful website interfaces
+- Multiple polished browser windows
+- Mobile website/app preview
+- UI components
+- Website screens
+- Code/interface details used very subtly
+- Floating interface elements
+- Modern digital product visuals
+- Soft blue and pink lighting
+- Clean white environment
+
+The visual should communicate:
+
+**"I build websites and digital experiences."**
+
+It should feel desirable to a potential client.
+
+The visitor should think:
+
+> "I want a website like this."
+
+---
+
+# 💼 MAKE IT CLIENT-FOCUSED
+
+The visual should subtly communicate the idea of:
+
+**Build your website.**
+
+**Launch your digital product.**
+
+**Turn your idea into reality.**
+
+You can incorporate very subtle visual UI elements or floating labels such as:
+
+- Build
+- Design
+- Launch
+- Web
+- Apps
+- Digital
+
+BUT do not cover the image with lots of text.
+
+The image itself should do most of the communication.
+
+---
+
+# ✨ HERO VISUAL ANIMATION
+
+Make the AI-generated visual subtly animated.
+
+For example:
+
+- Website screens gently floating
+- Small UI panels moving slightly
+- Soft light movement
+- Very subtle parallax
+- Gentle hover movement
+- Small interface elements appearing/receding
+- Subtle blue/pink glow movement
+
+Keep the animation sophisticated.
+
+### DO NOT:
+
+❌ Make it spin constantly  
+❌ Add excessive particles  
+❌ Make it look like a gaming website  
+❌ Use neon cyberpunk effects  
+❌ Flash elements  
+❌ Use aggressive 3D animations  
+❌ Distract from the headline
+
+The animation should feel like a premium interactive portfolio.
+
+---
+
+# 📐 EXACT HERO COMPOSITION
+
+Use the current layout approximately like this:
+
+┌─────────────────────────────────────────────────────┐
+│                    NAVBAR                           │
+├─────────────────────────────────────────────────────┤
+│                                                     │
+│  WEB DEVELOPER              AI-GENERATED           │
+│  & DIGITAL CREATOR          HERO VISUAL            │
+│                                                     │
+│  Interfaces                 [ WEBSITE / APP ]      │
+│  With intent.               [ DIGITAL VISUAL ]     │
+│                                                     │
+│  Description                [      ✦       ]       │
+│                                                     │
+│  [ Explore Work ]                                  │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+
+The existing left-side content should remain strong.
+
+The right side should no longer feel empty.
+
+---
+
+# 🚨 DO NOT USE MY PERSONAL PHOTO IN THE HERO
+
+I will upload my real photograph separately.
+
+### DO NOT PUT THAT PHOTO IN THE HERO.
+
+The Hero should use:
+
+**AI-GENERATED PROFESSIONAL DIGITAL/WEB DEVELOPMENT VISUAL**
+
+My actual photograph belongs in:
+
+# ABOUT ME
+
+---
+
+# 👩 ABOUT SECTION — USE MY REAL PHOTO
+
+I will attach/upload my actual photograph to this project.
+
+Use that exact uploaded photograph in the About section.
+
+### IMPORTANT:
+
+Do NOT generate a replacement person.
+
+Do NOT use a stock person.
+
+Do NOT use an AI-generated person.
+
+Do NOT alter my identity.
+
+Use my uploaded photo as the actual portrait of Tanu.
+
+---
+
+# 📸 ABOUT PHOTO PLACEMENT
+
+Create a beautiful editorial About layout.
+
+The photo should be prominent and large enough to immediately establish the person behind the portfolio.
+
+Do NOT put it into a tiny profile-picture circle.
+
+Do NOT make it look like a resume.
+
+Use:
+
+- Large portrait
+- Sophisticated cropping
+- Soft pink/blue atmospheric glow
+- Clean whitespace
+- Elegant typography
+- Subtle visual layering
+
+The photo should feel integrated into the portfolio's art direction.
+
+---
+
+# 📝 ABOUT CONTENT
+
+Use this exact content:
+
+⌁ Same girl.
+Bigger dreams.
+
+## About Me
+
+# Hi, I'm Tanu
+
+I'm a computer science student and a passionate full-stack web developer. I enjoy building clean, efficient and user-friendly websites. I love learning new technologies and turning ideas into real-world products.
+
+### Computer Science
+Student
+
+### Mumbai, India
+
+### Tech · Games · Animals
+(yes, all of it)
+
+---
+
+# 💬 PERSONAL STATEMENT
+
+Display this prominently:
+
+**"I don't just want to build websites.
+I want to build things that matter."**
+
+This should NOT be buried inside a card.
+
+Make it a strong editorial quote with plenty of whitespace.
+
+---
+
+# 🧑‍💻 SKILLS
+
+After the About content:
+
+## My Skills
+
+### Technologies I Work With
+
+Use:
+
+- React
+- TypeScript
+- Next.js
+- Tailwind CSS
+- Firebase
+- Git
+- PostgreSQL
+- Node.js
+
+Keep the existing:
+
+**View All Skills**
+
+link:
+
+https://tanu-labs.vercel.app/#contact
+
+---
+
+# 🚫 DO NOT MAKE SKILLS A GRID
+
+Do NOT create:
+
+[React] [TypeScript] [Next.js]
+[Tailwind] [Firebase] [Git]
+
+as repetitive square cards.
+
+Instead use an elegant editorial/typographic technology presentation.
+
+---
+
+# 🎨 VISUAL STYLE
+
+Keep the existing overall design direction:
+
+### WHITE + BLUE + PINK
+
+Use:
+
+- Clean white background
+- Soft pink atmosphere
+- Soft blue atmosphere
+- Deep navy typography
+- Blue accents
+- Pink accents
+
+No purple.
+
+No full-page grid.
+
+No graph-paper background.
+
+No repetitive boxes.
+
+---
+
+# 🧠 IMPORTANT DESIGN RULE
+
+The current Hero already has a strong typography composition.
+
+### DO NOT DESTROY IT.
+
+You are solving ONE specific problem:
+
+**The large empty area on the right needs a premium visual.**
+
+So:
+
+### LEFT = Existing hero typography/content
+
+### RIGHT = New AI-generated animated web-development visual
+
+Then:
+
+### ABOUT = My real uploaded photograph + my personal information
+
+This creates a clear storytelling flow:
+
+**Hero → What I build**
+
+↓
+
+**About → Who builds it**
+
+↓
+
+**Skills → What I build it with**
+
+↓
+
+**Work → What I've actually built**
+
+---
+
+# 🔥 FINAL EXPERIENCE
+
+When someone lands on the website:
+
+They should immediately see:
+
+**Tanu Developer**
+
+**Interfaces With Intent.**
+
+Then the right side visually demonstrates:
+
+**websites + apps + digital products**
+
+Then the visitor scrolls down and sees my actual photograph and learns:
+
+**Who is Tanu?**
+
+Then they see my skills and finally my real projects.
+
+The website should make me look like a **real professional developer who clients can hire**, not a generic student portfolio.
+
+Keep the design clean, premium, spacious and editorial.
+
+### MOST IMPORTANT:
+
+**AI VISUAL → HERO RIGHT SIDE**
+
+**MY REAL PHOTO → ABOUT SECTION**
+
+Do not mix these two.

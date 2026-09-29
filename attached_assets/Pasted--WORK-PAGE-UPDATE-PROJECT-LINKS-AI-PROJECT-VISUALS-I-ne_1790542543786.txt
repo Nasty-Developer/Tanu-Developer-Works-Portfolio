@@ -1,0 +1,524 @@
+## 🚨 WORK PAGE UPDATE — PROJECT LINKS + AI PROJECT VISUALS
+
+I need you to update the NEW portfolio's **Work** page.
+
+I am providing the exact project names/categories and URLs below.
+
+### IMPORTANT:
+DO NOT invent, modify, shorten, or replace these URLs.
+
+Use these exact URLs as the project's **Live Project / Visit Website** links.
+
+---
+
+# 🏆 PROJECT PRIORITY ORDER
+
+The projects MUST appear in this order:
+
+## 01 — New National Advertising
+Priority: VERY HIGH
+
+Project type:
+Advertising / Printing / Signage Website
+
+Live Website:
+https://newnationaladvertising.com/
+
+---
+
+## 02 — Ayush Medico
+Priority: VERY HIGH
+
+Project type:
+Pharmacy / Medical Website
+
+Live Website:
+https://ayushmedico.com/
+
+---
+
+## 03 — Dental Care Trust
+Priority: VERY HIGH
+
+Project type:
+Dental / Healthcare Website
+
+Live Website:
+https://dentalcaretrust.com/
+
+---
+
+## 04 — SaveStreet Dogs
+Priority: VERY HIGH
+
+Project type:
+Animal Rescue / Dog Adoption / NGO Website
+
+Live Website:
+https://savestreetdogss.com/
+
+---
+
+# OTHER PROJECTS
+
+Continue with the following projects after the four priority projects.
+
+## 05 — Restaurant Website
+
+Project type:
+Restaurant / Food / Hospitality Website
+
+Live Website:
+https://serai-fa-premium.vercel.app/
+
+
+## 06 — Dental Clinic Website
+
+Project name:
+Somil Dental Clinic
+
+Project type:
+Dental Clinic Website
+
+Live Website:
+https://somil-dental-clinic.vercel.app/
+
+
+## 07 — Gaming Website
+
+Project type:
+Gaming Website
+
+Live Website:
+https://tanugamehub.vercel.app/
+
+
+## 08 — Gym Website
+
+Project type:
+Gym / Fitness Website
+
+Live Website:
+https://aurum-gym.vercel.app/
+
+
+## 09 — Clothing Website
+
+Project type:
+Clothing / Fashion Website
+
+Live Website:
+https://sea-clothing.vercel.app/
+
+
+## 10 — E-Commerce Website
+
+Project type:
+E-Commerce Website
+
+Live Website:
+https://ecommerce-pro-tanu.vercel.app/
+
+---
+
+# 🎨 PROJECT IMAGES — VERY IMPORTANT
+
+I want a **unique AI-generated visual for EVERY project**.
+
+DO NOT use generic stock images.
+
+DO NOT use random abstract gradients.
+
+DO NOT use the same image repeatedly.
+
+The image must visually communicate what the project actually is.
+
+Generate the visual based on the **project name + project type**.
+
+---
+
+# 🖼️ IMAGE DIRECTION
+
+### New National Advertising
+
+Generate a premium visual representing:
+
+- Professional advertising agency
+- Sign boards
+- Digital printing
+- Solvent flex printing
+- Branding
+- Commercial signage
+- Modern advertising production
+
+It should feel like a real premium advertising company's website/project.
+
+---
+
+### Ayush Medico
+
+Generate a premium medical/pharmacy website visual.
+
+Include visual concepts such as:
+
+- Pharmacy
+- Medicine
+- Healthcare
+- Professional medical interface
+- Clean pharmaceutical aesthetic
+
+Use a trustworthy, modern healthcare visual language.
+
+---
+
+### Dental Care Trust
+
+Generate a premium dental/healthcare website visual.
+
+Use concepts such as:
+
+- Modern dental clinic
+- Dental care
+- Clean healthcare interface
+- Professional medical environment
+- Dental technology
+
+Keep it elegant and trustworthy.
+
+---
+
+### SaveStreet Dogs
+
+Generate a premium animal rescue / dog adoption website visual.
+
+Use concepts such as:
+
+- Rescue dogs
+- Dog adoption
+- Animal welfare
+- Caring / compassionate visual storytelling
+- Modern NGO website
+
+It should feel emotional but still professional.
+
+---
+
+### Restaurant Website
+
+Generate a premium restaurant/hospitality website visual.
+
+Use:
+
+- Elegant food presentation
+- Restaurant atmosphere
+- Premium dining
+- Modern hospitality branding
+
+---
+
+### Somil Dental Clinic
+
+Generate a premium dental clinic website visual.
+
+Use:
+
+- Modern dental clinic
+- Dentist / dental care
+- Clean medical environment
+- Premium healthcare design
+
+---
+
+### Gaming Website
+
+Generate a premium gaming website visual.
+
+Use:
+
+- Gaming
+- Modern gaming setup
+- Games
+- High-quality gaming atmosphere
+
+Do NOT make it look childish.
+
+---
+
+### Gym Website
+
+Generate a premium fitness/gym website visual.
+
+Use:
+
+- Modern gym
+- Fitness equipment
+- Strength training
+- Premium fitness branding
+- Energetic but sophisticated atmosphere
+
+---
+
+### Clothing Website
+
+Generate a premium fashion/clothing website visual.
+
+Use:
+
+- Fashion
+- Clothing
+- Editorial fashion photography
+- Premium ecommerce aesthetic
+- Modern fashion branding
+
+---
+
+### E-Commerce Website
+
+Generate a premium modern ecommerce website visual.
+
+Use:
+
+- Online shopping
+- Product presentation
+- Modern ecommerce UI
+- Premium product photography
+- Clean retail experience
+
+---
+
+# 🚫 IMPORTANT IMAGE RULES
+
+Every project needs its OWN visual.
+
+Do NOT:
+
+❌ Use generic abstract AI art  
+❌ Use random gradients  
+❌ Use unrelated stock photos  
+❌ Reuse one image for multiple projects  
+❌ Generate images that don't match the project  
+❌ Put fake text/logos inside the image unnecessarily  
+❌ Make the project image look like a random wallpaper
+
+The image should immediately communicate what the project is about.
+
+---
+
+# 💎 WORK PAGE DESIGN
+
+Remember the previous design instruction:
+
+## DO NOT MAKE THIS A BORING GRID.
+
+I specifically do NOT want:
+
+[Project 1] [Project 2] [Project 3]
+
+followed by another row of:
+
+[Project 4] [Project 5] [Project 6]
+
+with identical cards.
+
+Do NOT turn the entire Work page into a dashboard.
+
+---
+
+# ✨ USE AN EDITORIAL PROJECT SHOWCASE
+
+Make the Work page feel like a premium designer/developer portfolio.
+
+Use large project presentations.
+
+For example:
+
+### Project 01
+Large visual
+
+New National Advertising
+
+Description
+
+Project type
+
+Visit Website →
+
+---
+
+### Project 02
+
+Different composition
+
+Large visual
+
+Ayush Medico
+
+Description
+
+Visit Website →
+
+---
+
+Alternate the layouts:
+
+**Image left → content right**
+
+then:
+
+**Content left → image right**
+
+then:
+
+**Large full-width project visual**
+
+Then continue varying the compositions.
+
+The project sections should feel individually art-directed.
+
+---
+
+# 🔗 LINKS
+
+Each project MUST have a prominent:
+
+### Visit Website →
+
+button.
+
+That button must open the exact URL I provided.
+
+Use:
+
+New National Advertising:
+https://newnationaladvertising.com/
+
+Ayush Medico:
+https://ayushmedico.com/
+
+Dental Care Trust:
+https://dentalcaretrust.com/
+
+SaveStreet Dogs:
+https://savestreetdogss.com/
+
+Restaurant:
+https://serai-fa-premium.vercel.app/
+
+Somil Dental Clinic:
+https://somil-dental-clinic.vercel.app/
+
+Gaming:
+https://tanugamehub.vercel.app/
+
+Gym:
+https://aurum-gym.vercel.app/
+
+Clothing:
+https://sea-clothing.vercel.app/
+
+E-Commerce:
+https://ecommerce-pro-tanu.vercel.app/
+
+---
+
+# ⚠️ DO NOT CHANGE MY URLS
+
+These URLs are provided by me.
+
+Use them exactly.
+
+Do NOT:
+
+- Change spelling
+- Add/remove characters
+- Replace them with placeholders
+- Use '#' 
+- Create fake GitHub URLs
+- Guess missing URLs
+- Redirect them somewhere else
+
+If a project does not have a GitHub URL provided here, simply don't invent one.
+
+---
+
+# 🏆 PRIORITY VISUAL TREATMENT
+
+The first four projects are especially important:
+
+1. New National Advertising
+2. Ayush Medico
+3. Dental Care Trust
+4. SaveStreet Dogs
+
+Give these four larger and more prominent presentations.
+
+They should appear as the main featured work.
+
+The remaining projects can follow as additional work.
+
+---
+
+# 🎯 FINAL WORK PAGE GOAL
+
+The Work page should communicate:
+
+**"These are real websites/projects built by Tanu Developer."**
+
+It should look like a professional case-study portfolio.
+
+Not a template.
+
+Not a dashboard.
+
+Not a generic card grid.
+
+Not a collection of random AI images.
+
+Use:
+
+- Large typography
+- Large project visuals
+- Editorial layouts
+- Asymmetry
+- Whitespace
+- Smooth transitions
+- Premium hover effects
+- Clear project hierarchy
+- Strong visual storytelling
+
+And keep the overall:
+
+**Tanu Developer**
+
+branding.
+
+Do NOT bring back:
+
+**Tanu Developer Works**
+
+as the brand name.
+
+The Work page remains called **Work** and stays in the navbar.
+
+---
+
+# ✅ FINAL CHECK
+
+Before finishing, verify:
+
+✓ All 10 projects are present  
+✓ Correct priority order  
+✓ All URLs are exact  
+✓ Every project has a unique relevant visual  
+✓ First four projects receive featured treatment  
+✓ Visit Website buttons work  
+✓ Work page remains in navbar  
+✓ Brand remains "Tanu Developer"  
+✓ No grid-heavy layout  
+✓ No repeating card layout  
+✓ No background grid  
+✓ No fake project links  
+✓ No fake project information  
+✓ Light mode works  
+✓ Dark mode works  
+✓ Mobile layout works
