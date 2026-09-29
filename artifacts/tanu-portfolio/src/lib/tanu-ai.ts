@@ -5,9 +5,12 @@ export type AssistantMessage = {
 };
 
 export const assistantStarters = [
-  'What does a website cost?',
-  'What can Tanu build?',
-  'How do I start a project?',
+  'How much does a website cost?',
+  'What services do you offer?',
+  'Show me your work',
+  'What technologies do you use?',
+  'How can I contact Tanu?',
+  'Can you build a custom website?',
 ];
 
 const answers = [

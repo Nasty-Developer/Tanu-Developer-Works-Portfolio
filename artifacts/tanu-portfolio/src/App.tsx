@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'rea
 import {
   ArrowDownRight,
   ArrowUpRight,
-  Bot,
   BriefcaseBusiness,
   Check,
   ChevronDown,
@@ -25,6 +24,7 @@ import {
   X,
   Zap,
 } from 'lucide-react';
+import { SiWhatsapp } from 'react-icons/si';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
@@ -286,7 +286,7 @@ function TanuAssistant() {
           <div className="tanu-chat-messages" aria-live="polite">
             {messages.map((message) => (
               <div key={message.id} className={`tanu-chat-message ${message.role === 'user' ? 'is-user' : 'is-assistant'}`}>
-                {message.role === 'assistant' && <Bot size={13} />}
+                {message.role === 'assistant' && <Sparkles size={13} />}
                 <p>{message.content}</p>
               </div>
             ))}
@@ -299,7 +299,7 @@ function TanuAssistant() {
             )}
             {isTyping && (
               <div className="tanu-chat-message is-assistant tanu-chat-typing" aria-label="Tanu AI is typing">
-                <Bot size={13} /><span /><span /><span />
+                <Sparkles size={13} /><span /><span /><span />
               </div>
             )}
             <div ref={messageEndRef} />
@@ -315,15 +315,33 @@ function TanuAssistant() {
           <p className="tanu-chat-note">Curated portfolio assistant · <a href="tel:+918433553501">Call Tanu</a></p>
         </section>
       )}
-      <button
+       <button
         type="button"
         className={`tanu-assistant-trigger ${open ? 'is-open' : ''}`}
         onClick={() => setOpen((current) => !current)}
         aria-label={open ? 'Close Tanu AI assistant' : 'Open Tanu AI assistant'}
         aria-expanded={open}
-      >
-        {open ? <X size={19} /> : <><MessageCircle size={18} /><span className="tanu-assistant-spark"><Sparkles size={11} /></span></>}
+       >
+         {open ? <X size={19} /> : (
+           <span className="tanu-assistant-mark" aria-hidden="true">
+             <Sparkles size={21} strokeWidth={1.6} />
+             <i />
+             <b />
+           </span>
+         )}
       </button>
+       {!open && (
+         <a
+           className="whatsapp-float"
+           href="https://wa.me/918433553501"
+           target="_blank"
+           rel="noreferrer"
+           aria-label="Ask on WhatsApp"
+         >
+           <SiWhatsapp size={19} aria-hidden="true" />
+           <span>Ask on WhatsApp</span>
+         </a>
+       )}
     </div>
   );
 }
@@ -350,13 +368,21 @@ function SignatureLoader({ exiting }: { exiting: boolean }) {
 
 function Header({ dark, onToggle }: { dark: boolean; onToggle: () => void }) {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const go = (href: string) => {
     setOpen(false);
     scrollToId(href);
   };
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 18);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="fixed left-0 right-0 top-0 z-30 px-5 pt-4 md:px-8">
+    <header className={`site-header fixed left-0 right-0 top-0 z-30 px-5 pt-4 md:px-8 ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="section-shell flex h-[64px] items-center justify-between rounded-full border border-[var(--line)] bg-background/82 px-4 shadow-[0_8px_35px_rgba(30,42,67,.06)] backdrop-blur-xl md:px-5">
         <a href="#top" className="group flex items-center gap-2.5" onClick={(event) => { event.preventDefault(); go('#top'); }} aria-label="Back to top">
           <img src="/td-logo.png" alt="TD" className="td-logo td-logo-nav transition-transform group-hover:scale-[1.04]" />
@@ -501,7 +527,7 @@ function ProjectArtwork({ type }: { type: string }) {
 
 function ProjectCard({ project }: { project: typeof projects[number] }) {
   return (
-    <article className={`project-story project-story-${project.layout} group`}>
+    <article data-scroll-reveal-item className={`project-story project-story-${project.layout} group`}>
       <div className="project-story-visual overflow-hidden">
         <img
           src={project.visual}
@@ -547,7 +573,7 @@ function Home() {
   }, [dark]);
 
   useEffect(() => {
-    const revealItems = Array.from(document.querySelectorAll<HTMLElement>('[data-scroll-reveal]'));
+    const revealItems = Array.from(document.querySelectorAll<HTMLElement>('[data-scroll-reveal], [data-scroll-reveal-item]'));
     if (!revealItems.length) return;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reducedMotion || !('IntersectionObserver' in window)) {
@@ -565,6 +591,57 @@ function Home() {
 
     revealItems.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const photo = document.querySelector<HTMLElement>('.about-photo-wrap');
+    if (!photo || !window.matchMedia('(pointer: fine)').matches) return;
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const bounds = photo.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 5;
+      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 5;
+      photo.style.setProperty('--photo-shift-x', `${x.toFixed(2)}px`);
+      photo.style.setProperty('--photo-shift-y', `${y.toFixed(2)}px`);
+    };
+    const resetPointer = () => {
+      photo.style.setProperty('--photo-shift-x', '0px');
+      photo.style.setProperty('--photo-shift-y', '0px');
+    };
+
+    photo.addEventListener('pointermove', handlePointerMove);
+    photo.addEventListener('pointerleave', resetPointer);
+    return () => {
+      photo.removeEventListener('pointermove', handlePointerMove);
+      photo.removeEventListener('pointerleave', resetPointer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll<HTMLElement>('.magnetic-button, .social-link'));
+    if (!elements.length || !window.matchMedia('(pointer: fine)').matches) return;
+
+    const cleanups = elements.map((element) => {
+      const move = (event: PointerEvent) => {
+        const bounds = element.getBoundingClientRect();
+        const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 4;
+        const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 4;
+        element.style.setProperty('--pointer-x', `${x.toFixed(2)}px`);
+        element.style.setProperty('--pointer-y', `${y.toFixed(2)}px`);
+      };
+      const leave = () => {
+        element.style.setProperty('--pointer-x', '0px');
+        element.style.setProperty('--pointer-y', '0px');
+      };
+      element.addEventListener('pointermove', move);
+      element.addEventListener('pointerleave', leave);
+      return () => {
+        element.removeEventListener('pointermove', move);
+        element.removeEventListener('pointerleave', leave);
+      };
+    });
+
+    return () => cleanups.forEach((cleanup) => cleanup());
   }, []);
 
   useEffect(() => {
@@ -799,7 +876,7 @@ function Home() {
 
         <section id="contact" data-scroll-reveal className="scroll-reveal-section scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
           <div className="section-shell grid gap-14 md:grid-cols-[.92fr_1.08fr] md:gap-24">
-            <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Let’s make something useful</span><h2 className="mt-6 font-display text-5xl font-bold leading-[.93] tracking-[-.09em] md:text-[5.5rem]">Have a good<br /><span className="text-[var(--pink)]">one in mind?</span></h2><p className="mt-8 max-w-[390px] text-base leading-7 text-muted-foreground">Tell me what you’re building, where it’s stuck, or what you want it to become. I’ll reply at <strong className="text-foreground">tanudevworks@gmail.com</strong>.</p><div className="mt-10 flex flex-wrap gap-3"><a href="https://wa.me/918433553501" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Phone size={14} /> WhatsApp</a><a href="mailto:tanudevworks@gmail.com" className="flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Mail size={14} /> Email directly</a></div></div>
+            <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Let’s make something useful</span><h2 className="mt-6 font-display text-5xl font-bold leading-[.93] tracking-[-.09em] md:text-[5.5rem]">Have a good<br /><span className="text-[var(--pink)]">one in mind?</span></h2><p className="mt-8 max-w-[390px] text-base leading-7 text-muted-foreground">Tell me what you’re building, where it’s stuck, or what you want it to become. I’ll reply at <strong className="text-foreground">tanudevworks@gmail.com</strong>.</p><div className="mt-10 flex flex-wrap gap-3"><a href="tel:+918433553501" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Phone size={14} /> Call Tanu</a><a href="https://wa.me/918433553501" target="_blank" rel="noreferrer" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><SiWhatsapp size={14} /> WhatsApp</a><a href="https://www.instagram.com/tanu.developer?stkn=MWdldTV5N3YzYnFtcw==" target="_blank" rel="noreferrer" aria-label="Follow Tanu Developer on Instagram" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--pink)]"><Instagram size={14} /> Instagram</a><a href="mailto:tanudevworks@gmail.com" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Mail size={14} /> Email directly</a></div></div>
             <form onSubmit={submitContact} className="contact-form border-t border-[var(--line)] pt-7 md:pt-8">
               <div className="mb-8 flex items-center justify-between"><span className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-muted-foreground">Project enquiry</span><BriefcaseBusiness size={18} className="text-[var(--pink)]" /></div>
               <div className="grid gap-6 sm:grid-cols-2"><label className="text-xs font-medium">Your name<input required name="name" placeholder="What should I call you?" className="mt-2 w-full border-b border-[var(--line)] bg-transparent py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground" /></label><label className="text-xs font-medium">Your email<input required type="email" name="email" placeholder="you@company.com" className="mt-2 w-full border-b border-[var(--line)] bg-transparent py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground" /></label></div>
@@ -810,7 +887,7 @@ function Home() {
         </section>
       </main>
       <footer className="border-t border-[var(--line)] px-5 py-10 md:px-8">
-        <div className="section-shell flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><div className="flex items-center gap-2.5"><img src="/td-logo.png" alt="TD" className="td-logo td-logo-footer" /><span className="text-sm font-semibold tracking-[-.02em]">Tanu Developer</span></div><p className="mt-4 max-w-[270px] text-xs leading-5 text-muted-foreground">Independent full-stack developer and digital creator in Mumbai, India.</p></div><div className="flex flex-wrap items-center gap-5 text-xs text-muted-foreground"><a className="underlined" href="https://www.instagram.com/tanuuuyyyy?igsh=cDAya3h0YnpxcmFq" target="_blank" rel="noreferrer"><Instagram size={15} /></a><a className="underlined" href="https://github.com/tanudevworks-web" target="_blank" rel="noreferrer"><Github size={15} /></a><a className="underlined" href="https://www.linkedin.com/in/tanu-tapase-461405411" target="_blank" rel="noreferrer"><Linkedin size={15} /></a><span className="ml-2 border-l border-[var(--line)] pl-5">© 2025 Tanu Tapase</span><a href="#top" onClick={(event) => { event.preventDefault(); scrollToId('#top'); }} className="flex items-center gap-1 font-medium text-foreground">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></div>
+         <div className="section-shell flex flex-col justify-between gap-8 md:flex-row md:items-end"><div><div className="flex items-center gap-2.5"><img src="/td-logo.png" alt="TD" className="td-logo td-logo-footer" /><span className="text-sm font-semibold tracking-[-.02em]">Tanu Developer</span></div><p className="mt-4 max-w-[270px] text-xs leading-5 text-muted-foreground">Independent full-stack developer and digital creator in Mumbai, India.</p></div><div className="flex flex-wrap items-center gap-5 text-xs text-muted-foreground"><a aria-label="Follow Tanu Developer on Instagram" className="social-link underlined" href="https://www.instagram.com/tanu.developer?stkn=MWdldTV5N3YzYnFtcw==" target="_blank" rel="noreferrer"><Instagram size={15} /></a><a aria-label="Tanu Developer on GitHub" className="social-link underlined" href="https://github.com/tanudevworks-web" target="_blank" rel="noreferrer"><Github size={15} /></a><a aria-label="Tanu Tapase on LinkedIn" className="social-link underlined" href="https://www.linkedin.com/in/tanu-tapase-461405411" target="_blank" rel="noreferrer"><Linkedin size={15} /></a><span className="ml-2 border-l border-[var(--line)] pl-5">© 2025 Tanu Tapase</span><a href="#top" onClick={(event) => { event.preventDefault(); scrollToId('#top'); }} className="flex items-center gap-1 font-medium text-foreground">Back to top <ChevronDown size={14} className="rotate-180" /></a></div></div>
       </footer>
       {menuToast && <div className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-[var(--line)] bg-foreground px-4 py-3 text-xs font-medium text-background shadow-[var(--shadow-float)]"><Check size={14} className="text-[var(--pink)]" /> Your enquiry is ready — email Tanu directly to send it.</div>}
       </div>
