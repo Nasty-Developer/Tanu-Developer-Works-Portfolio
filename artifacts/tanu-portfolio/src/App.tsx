@@ -1,7 +1,8 @@
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import {
   ArrowDownRight,
   ArrowUpRight,
+  Bot,
   BriefcaseBusiness,
   Check,
   ChevronDown,
@@ -13,6 +14,7 @@ import {
   Linkedin,
   Mail,
   Menu,
+  MessageCircle,
   Moon,
   MoveUpRight,
   Palette,
@@ -28,6 +30,11 @@ import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
+import {
+  assistantStarters,
+  getTanuAssistantReply,
+  type AssistantMessage,
+} from '@/lib/tanu-ai';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
 const queryClient = new QueryClient();
@@ -35,6 +42,7 @@ const queryClient = new QueryClient();
 const navItems = [
   { label: 'Work', href: '#work' },
   { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
   { label: 'Process', href: '#process' },
   { label: 'Contact', href: '#contact' },
 ];
@@ -141,6 +149,20 @@ const capabilities = [
 
 const skills = ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Firebase', 'Git', 'PostgreSQL', 'Node.js'];
 
+const pricingPackages = [
+  { number: '01', name: 'Basic Frontend', price: '₹3,499', detail: 'A focused, responsive frontend for a clear launch.' },
+  { number: '02', name: 'Professional Frontend', price: '₹4,999', detail: 'A more considered web presence with stronger polish and interaction.' },
+  { number: '03', name: 'Admin + Frontend', price: '₹9,999', detail: 'A public experience plus the tools needed to keep it moving.' },
+  { number: '04', name: 'Custom Website', price: 'Let’s talk', detail: 'For larger ideas, custom systems, and a brief that needs room.' },
+];
+
+const initialAssistantMessage: AssistantMessage = {
+  id: 'welcome',
+  role: 'assistant',
+  content:
+    'Hi, I’m Tanu AI. I can help you understand Tanu’s work, services, pricing, and how to start a project.',
+};
+
 function scrollToId(id: string) {
   const target = document.querySelector(id);
   if (!target) return;
@@ -191,6 +213,117 @@ function HeroVisual() {
         <span>web / apps / digital products</span>
         <span className="hero-visual-status"><i /> available for select work</span>
       </div>
+    </div>
+  );
+}
+
+function TanuAssistant() {
+  const [open, setOpen] = useState(false);
+  const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [messages, setMessages] = useState<AssistantMessage[]>([initialAssistantMessage]);
+  const messageEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    messageEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, [messages, isTyping, open]);
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, []);
+
+  const sendMessage = (value = input) => {
+    const content = value.trim();
+    if (!content || isTyping) return;
+    const userMessage: AssistantMessage = {
+      id: `user-${Date.now()}`,
+      role: 'user',
+      content,
+    };
+    setMessages((current) => [...current, userMessage]);
+    setInput('');
+    setIsTyping(true);
+
+    window.setTimeout(() => {
+      setMessages((current) => [
+        ...current,
+        {
+          id: `assistant-${Date.now()}`,
+          role: 'assistant',
+          content: getTanuAssistantReply(content),
+        },
+      ]);
+      setIsTyping(false);
+    }, 560);
+  };
+
+  const openContact = () => {
+    setOpen(false);
+    scrollToId('#contact');
+  };
+
+  return (
+    <div className="tanu-assistant">
+      {open && (
+        <section className="tanu-chat-panel" role="dialog" aria-label="Tanu AI assistant">
+          <div className="tanu-chat-header">
+            <div className="flex items-center gap-3">
+              <span className="tanu-chat-avatar"><Sparkles size={15} /></span>
+              <div>
+                <p className="font-display text-sm font-semibold">Tanu AI</p>
+                <p className="tanu-chat-status"><i /> Tanu Developer assistant</p>
+              </div>
+            </div>
+            <button type="button" className="tanu-chat-close" onClick={() => setOpen(false)} aria-label="Close Tanu AI">
+              <X size={16} />
+            </button>
+          </div>
+          <div className="tanu-chat-messages" aria-live="polite">
+            {messages.map((message) => (
+              <div key={message.id} className={`tanu-chat-message ${message.role === 'user' ? 'is-user' : 'is-assistant'}`}>
+                {message.role === 'assistant' && <Bot size={13} />}
+                <p>{message.content}</p>
+              </div>
+            ))}
+            {messages.length === 1 && (
+              <div className="tanu-chat-starters">
+                {assistantStarters.map((starter) => (
+                  <button key={starter} type="button" onClick={() => sendMessage(starter)}>{starter}</button>
+                ))}
+              </div>
+            )}
+            {isTyping && (
+              <div className="tanu-chat-message is-assistant tanu-chat-typing" aria-label="Tanu AI is typing">
+                <Bot size={13} /><span /><span /><span />
+              </div>
+            )}
+            <div ref={messageEndRef} />
+          </div>
+          <div className="tanu-chat-actions">
+            <a href="https://wa.me/918433553501" target="_blank" rel="noreferrer">Ask on WhatsApp <ArrowUpRight size={13} /></a>
+            <button type="button" onClick={openContact}>Start a project <ArrowUpRight size={13} /></button>
+          </div>
+          <form className="tanu-chat-form" onSubmit={(event) => { event.preventDefault(); sendMessage(); }}>
+            <input value={input} onChange={(event) => setInput(event.target.value)} placeholder="Ask about a project..." aria-label="Ask Tanu AI a question" />
+            <button type="submit" aria-label="Send message" disabled={!input.trim() || isTyping}><Send size={15} /></button>
+          </form>
+          <p className="tanu-chat-note">Curated portfolio assistant · <a href="tel:+918433553501">Call Tanu</a></p>
+        </section>
+      )}
+      <button
+        type="button"
+        className={`tanu-assistant-trigger ${open ? 'is-open' : ''}`}
+        onClick={() => setOpen((current) => !current)}
+        aria-label={open ? 'Close Tanu AI assistant' : 'Open Tanu AI assistant'}
+        aria-expanded={open}
+      >
+        {open ? <X size={19} /> : <><MessageCircle size={18} /><span className="tanu-assistant-spark"><Sparkles size={11} /></span></>}
+      </button>
     </div>
   );
 }
@@ -414,6 +547,51 @@ function Home() {
   }, [dark]);
 
   useEffect(() => {
+    const revealItems = Array.from(document.querySelectorAll<HTMLElement>('[data-scroll-reveal]'));
+    if (!revealItems.length) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      revealItems.forEach((item) => item.classList.add('is-revealed'));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+
+    revealItems.forEach((item) => observer.observe(item));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const visual = document.querySelector<HTMLElement>('.hero-visual');
+    if (!visual || !window.matchMedia('(pointer: fine)').matches) return;
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const bounds = visual.getBoundingClientRect();
+      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 8;
+      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 8;
+      visual.style.setProperty('--hero-shift-x', `${x.toFixed(2)}px`);
+      visual.style.setProperty('--hero-shift-y', `${y.toFixed(2)}px`);
+    };
+    const resetPointer = () => {
+      visual.style.setProperty('--hero-shift-x', '0px');
+      visual.style.setProperty('--hero-shift-y', '0px');
+    };
+
+    visual.addEventListener('pointermove', handlePointerMove);
+    visual.addEventListener('pointerleave', resetPointer);
+    return () => {
+      visual.removeEventListener('pointermove', handlePointerMove);
+      visual.removeEventListener('pointerleave', resetPointer);
+    };
+  }, []);
+
+  useEffect(() => {
     let cancelled = false;
     let exitTimer: number | undefined;
     let minimumTimer: number | undefined;
@@ -448,12 +626,12 @@ function Home() {
       finished = true;
       if (fallbackTimer) window.clearTimeout(fallbackTimer);
 
-      const minimumDisplayTime = reducedMotion ? 0 : 720;
+      const minimumDisplayTime = reducedMotion ? 0 : 520;
       const remainingTime = Math.max(0, minimumDisplayTime - (performance.now() - startedAt));
       minimumTimer = window.setTimeout(() => {
         if (cancelled) return;
         setLoaderExiting(true);
-        exitTimer = window.setTimeout(() => setLoading(false), reducedMotion ? 0 : 620);
+        exitTimer = window.setTimeout(() => setLoading(false), reducedMotion ? 0 : 420);
       }, remainingTime);
     };
 
@@ -508,10 +686,10 @@ function Home() {
             <div className="hero-grid">
               <div className="max-w-[920px]">
                 <p className="mb-5 flex items-center gap-2 font-mono-custom text-xs uppercase tracking-[.19em] text-[var(--blue)] reveal reveal-delay-1"><Sparkles size={14} /> Web Developer &amp; Digital Creator</p>
-                <h1 className="font-display text-[clamp(3.5rem,9.5vw,8.8rem)] font-extrabold leading-[.91] tracking-[-.095em] reveal reveal-delay-1">Interfaces<br /><span className="text-[var(--blue)]">with intent.</span></h1>
+                 <h1 className="hero-title font-display text-[clamp(3.5rem,9.5vw,8.8rem)] font-extrabold leading-[.91] tracking-[-.095em] reveal reveal-delay-1"><span className="hero-title-line">Interfaces</span><br /><span className="hero-title-line hero-title-accent text-[var(--blue)]">with intent.</span></h1>
                 <div className="mt-10 flex max-w-[650px] flex-col justify-between gap-8 sm:flex-row sm:items-end reveal reveal-delay-2">
                   <p className="max-w-[390px] text-[17px] leading-7 text-muted-foreground">I’m Tanu Tapase — a full-stack developer building digital experiences that feel clear, capable, and worth remembering.</p>
-                  <a href="#work" onClick={(event) => { event.preventDefault(); scrollToId('#work'); }} className="group flex w-fit items-center gap-3 rounded-full bg-foreground px-5 py-3.5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
+                   <a href="#work" onClick={(event) => { event.preventDefault(); scrollToId('#work'); }} className="magnetic-button group flex w-fit items-center gap-3 rounded-full bg-foreground px-5 py-3.5 text-sm font-semibold text-background transition-transform hover:-translate-y-0.5">
                     Explore selected work <ArrowDownRight size={17} className="button-arrow" />
                   </a>
                 </div>
@@ -528,14 +706,14 @@ function Home() {
           </div>
         </section>
 
-        <section id="work" className="scroll-mt-28 px-5 pb-24 pt-0 md:px-8 md:pb-32 md:pt-0">
+        <section id="work" data-scroll-reveal className="scroll-reveal-section scroll-mt-28 px-5 pb-24 pt-0 md:px-8 md:pb-32 md:pt-0">
           <div className="section-shell">
             <div className="mb-12 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Selected work</span><h2 className="mt-5 font-display text-5xl font-bold tracking-[-.08em] md:text-7xl">Made to be used.</h2></div><p className="max-w-[250px] text-sm leading-6 text-muted-foreground">A few digital products and experiences shaped with care.</p></div>
             <div>{projects.map((project) => <ProjectCard key={project.number} project={project} />)}</div>
           </div>
         </section>
 
-        <section id="about" className="scroll-mt-28 border-y border-[var(--line)] bg-secondary/45 px-5 py-14 md:px-8 md:py-20">
+        <section id="about" data-scroll-reveal className="scroll-reveal-section scroll-mt-28 border-y border-[var(--line)] bg-secondary/45 px-5 py-14 md:px-8 md:py-20">
           <div className="section-shell about-shell">
             <div className="about-layout">
               <div className="about-photo-wrap">
@@ -544,7 +722,7 @@ function Home() {
                 <span className="about-photo-label">tanu / digital creator</span>
               </div>
               <div className="about-copy">
-                <h2 className="font-display text-5xl font-bold leading-[.94] tracking-[-.08em] md:text-7xl">Hi, I'm Tanu</h2>
+                <h2 className="about-title font-display text-5xl font-bold leading-[.94] tracking-[-.08em] md:text-7xl"><span>Hi, I'm</span> <em>Tanu</em></h2>
                 <p className="mt-7 max-w-[520px] text-lg leading-8 text-muted-foreground">I'm a computer science student and a passionate full-stack web developer. I enjoy building clean, efficient and user-friendly websites. I love learning new technologies and turning ideas into real-world products.</p>
                 <div className="about-details mt-10">
                   <div><span className="font-mono-custom text-[10px] uppercase tracking-[.16em] text-muted-foreground">Computer Science</span><strong>Student</strong></div>
@@ -557,7 +735,7 @@ function Home() {
           </div>
         </section>
 
-        <section id="skills" className="scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
+        <section id="skills" data-scroll-reveal className="scroll-reveal-section scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
           <div className="section-shell grid gap-12 md:grid-cols-[1fr_1fr] md:gap-20">
             <div>
               <span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">My Skills</span>
@@ -572,28 +750,51 @@ function Home() {
           </div>
         </section>
 
-        <section className="border-y border-[var(--line)] bg-foreground px-5 py-24 text-background md:px-8 md:py-32">
+        <section data-scroll-reveal className="scroll-reveal-section border-y border-[var(--line)] bg-foreground px-5 py-24 text-background md:px-8 md:py-32">
           <div className="section-shell">
             <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end"><div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">What I bring</span><h2 className="mt-5 max-w-[600px] font-display text-4xl font-bold leading-[.96] tracking-[-.07em] md:text-6xl">Good work starts<br />before the code.</h2></div><p className="max-w-[270px] text-sm leading-6 text-background/60">Business-focused design, direct communication, and a build process that respects your time.</p></div>
             <div className="mt-16 border-t border-background/20">{capabilities.map(({ index, title, text, icon: Icon }) => <div key={title} className="capability-line group flex flex-col gap-4 border-b border-background/20 py-7 md:flex-row md:items-center md:gap-12"><span className="w-10 font-mono-custom text-[10px] text-background/45">{index}</span><Icon size={19} strokeWidth={1.5} className="hidden text-[var(--pink)] transition-transform group-hover:rotate-6 md:block" /><h3 className="min-w-[230px] font-display text-2xl font-semibold tracking-[-.05em]">{title}</h3><p className="max-w-[380px] text-sm leading-6 text-background/60">{text}</p><ArrowUpRight size={17} className="ml-auto hidden text-background/45 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 md:block" /></div>)}</div>
           </div>
         </section>
 
-        <section id="process" className="scroll-mt-28 border-y border-[var(--line)] px-5 py-24 md:px-8 md:py-32">
-          <div className="section-shell grid gap-14 md:grid-cols-[.72fr_1.28fr]">
-            <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">The process</span><h2 className="mt-6 max-w-[330px] font-display text-5xl font-bold leading-[.96] tracking-[-.08em] md:text-6xl">Clear steps.<br />No theatre.</h2><p className="mt-7 max-w-[300px] text-sm leading-6 text-muted-foreground">You’ll always know what we’re solving, what happens next, and where your project stands.</p></div>
-            <div className="border-t border-[var(--line)]">{[['01', 'Align', 'We get specific about the business, the audience, and what success needs to feel like.'], ['02', 'Shape', 'I translate the brief into a sharp direction — structure, language, visual system, and plan.'], ['03', 'Build', 'The experience comes to life in clean, responsive code with regular, useful check-ins.'], ['04', 'Refine', 'We test the edges, tune the details, and hand over something ready for the real world.']].map(([num, title, text]) => <div key={num} className="grid grid-cols-[46px_1fr] gap-5 border-b border-[var(--line)] py-7 md:grid-cols-[68px_150px_1fr] md:gap-7"><span className="font-mono-custom text-xs text-[var(--blue)]">{num}</span><h3 className="font-display text-xl font-semibold tracking-[-.04em]">{title}</h3><p className="col-start-2 text-sm leading-6 text-muted-foreground md:col-start-auto">{text}</p></div>)}</div>
+        <section id="services" data-scroll-reveal className="scroll-reveal-section border-y border-[var(--line)] bg-secondary/25 px-5 py-24 md:px-8 md:py-32">
+          <div className="section-shell">
+            <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+              <div>
+                <span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Services / starting points</span>
+                <h2 className="mt-6 max-w-[650px] font-display text-5xl font-bold leading-[.94] tracking-[-.08em] md:text-7xl">Choose a useful<br /><span className="text-[var(--pink)]">place to begin.</span></h2>
+              </div>
+              <p className="max-w-[290px] text-sm leading-6 text-muted-foreground">Straightforward packages for getting a thoughtful website into the world. Domain charges are separate.</p>
+            </div>
+            <div className="pricing-list mt-16 border-t border-[var(--line)]">
+              {pricingPackages.map((item) => (
+                <a key={item.number} href="#contact" onClick={(event) => { event.preventDefault(); scrollToId('#contact'); }} className="pricing-line group">
+                  <span className="font-mono-custom text-[10px] text-muted-foreground">{item.number}</span>
+                  <h3 className="font-display text-2xl font-semibold tracking-[-.06em] md:text-3xl">{item.name}</h3>
+                  <p className="pricing-detail">{item.detail}</p>
+                  <strong className="pricing-price">{item.price}</strong>
+                  <ArrowUpRight size={17} className="pricing-arrow" />
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section className="border-y border-[var(--line)] bg-secondary/35 px-5 py-24 md:px-8 md:py-32">
+        <section id="process" data-scroll-reveal className="scroll-reveal-section scroll-mt-28 border-y border-[var(--line)] px-5 py-24 md:px-8 md:py-32">
+          <div className="section-shell grid gap-14 md:grid-cols-[.72fr_1.28fr]">
+            <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">The process</span><h2 className="mt-6 max-w-[330px] font-display text-5xl font-bold leading-[.96] tracking-[-.08em] md:text-6xl">Clear steps.<br />No theatre.</h2><p className="mt-7 max-w-[300px] text-sm leading-6 text-muted-foreground">You’ll always know what we’re solving, what happens next, and where your project stands.</p></div>
+             <div className="process-list border-t border-[var(--line)]">{[['01', 'Align', 'We get specific about the business, the audience, and what success needs to feel like.'], ['02', 'Shape', 'I translate the brief into a sharp direction — structure, language, visual system, and plan.'], ['03', 'Build', 'The experience comes to life in clean, responsive code with regular, useful check-ins.'], ['04', 'Refine', 'We test the edges, tune the details, and hand over something ready for the real world.']].map(([num, title, text]) => <div key={num} className="process-step grid grid-cols-[46px_1fr] gap-5 border-b border-[var(--line)] py-7 md:grid-cols-[68px_150px_1fr] md:gap-7"><span className="font-mono-custom text-xs text-[var(--blue)]">{num}</span><h3 className="font-display text-xl font-semibold tracking-[-.04em]">{title}</h3><p className="col-start-2 text-sm leading-6 text-muted-foreground md:col-start-auto">{text}</p></div>)}</div>
+          </div>
+        </section>
+
+        <section data-scroll-reveal className="scroll-reveal-section border-y border-[var(--line)] bg-secondary/35 px-5 py-24 md:px-8 md:py-32">
           <div className="section-shell grid gap-14 md:grid-cols-[.8fr_1.2fr]">
             <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">A short timeline</span><h2 className="mt-6 font-display text-5xl font-bold leading-[.96] tracking-[-.08em] md:text-6xl">In the<br />making.</h2></div>
             <div className="relative border-l border-[var(--line)] pl-7 md:pl-12">{[['2021', 'First commercial project', 'The first real brief, the first launch, and the start of taking web work seriously.'], ['2022', 'Studio founded', 'Tanu Developer takes shape as a home for thoughtful design and full-stack development.'], ['2025', 'Premium studio launch', 'A sharper point of view: better systems, better stories, and a more considered way to build.']].map(([year, title, text], index) => <div key={year} className="relative pb-12 last:pb-0"><i className={`absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-background ${index === 2 ? 'bg-[var(--pink)]' : 'bg-[var(--blue)]'} md:-left-[55px]`} /><span className="font-mono-custom text-xs text-[var(--blue)]">{year}</span><h3 className="mt-3 font-display text-2xl font-semibold tracking-[-.05em]">{title}</h3><p className="mt-3 max-w-[420px] text-sm leading-6 text-muted-foreground">{text}</p></div>)}</div>
           </div>
         </section>
 
-        <section id="contact" className="scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
+        <section id="contact" data-scroll-reveal className="scroll-reveal-section scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
           <div className="section-shell grid gap-14 md:grid-cols-[.92fr_1.08fr] md:gap-24">
             <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Let’s make something useful</span><h2 className="mt-6 font-display text-5xl font-bold leading-[.93] tracking-[-.09em] md:text-[5.5rem]">Have a good<br /><span className="text-[var(--pink)]">one in mind?</span></h2><p className="mt-8 max-w-[390px] text-base leading-7 text-muted-foreground">Tell me what you’re building, where it’s stuck, or what you want it to become. I’ll reply at <strong className="text-foreground">tanudevworks@gmail.com</strong>.</p><div className="mt-10 flex flex-wrap gap-3"><a href="https://wa.me/918433553501" target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Phone size={14} /> WhatsApp</a><a href="mailto:tanudevworks@gmail.com" className="flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Mail size={14} /> Email directly</a></div></div>
             <form onSubmit={submitContact} className="contact-form border-t border-[var(--line)] pt-7 md:pt-8">
@@ -610,6 +811,7 @@ function Home() {
       </footer>
       {menuToast && <div className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-full border border-[var(--line)] bg-foreground px-4 py-3 text-xs font-medium text-background shadow-[var(--shadow-float)]"><Check size={14} className="text-[var(--pink)]" /> Your enquiry is ready — email Tanu directly to send it.</div>}
       </div>
+       <TanuAssistant />
       {loading && <SignatureLoader exiting={loaderExiting} />}
     </>
   );
