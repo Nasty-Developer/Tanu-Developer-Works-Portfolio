@@ -197,12 +197,19 @@ function HeroVisual() {
 
 function SignatureLoader({ exiting }: { exiting: boolean }) {
   return (
-    <div className={`signature-loader ${exiting ? 'signature-loader-exit' : ''}`} aria-hidden={exiting}>
+    <div
+      className={`signature-loader ${exiting ? 'signature-loader-exit' : ''}`}
+      role="status"
+      aria-live="polite"
+      aria-label="Loading Tanu Developer portfolio"
+      aria-hidden={exiting}
+    >
       <div className="signature-loader-glow signature-loader-glow-blue" />
       <div className="signature-loader-glow signature-loader-glow-pink" />
       <div className="signature-loader-content">
         <img src="/td-logo.png" alt="TD" className="signature-loader-logo" />
         <p className="signature-loader-name">Tanu Developer</p>
+        <span className="signature-loader-progress" aria-hidden="true" />
       </div>
     </div>
   );
@@ -409,16 +416,46 @@ function Home() {
   useEffect(() => {
     let cancelled = false;
     let exitTimer: number | undefined;
+    let minimumTimer: number | undefined;
+    let fallbackTimer: number | undefined;
+    let finished = false;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const startedAt = performance.now();
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
     const preload = (src: string) => new Promise<void>((resolve) => {
       const image = new Image();
       image.onload = () => resolve();
       image.onerror = () => resolve();
       image.src = src;
     });
+
     const pageReady = document.readyState === 'complete'
       ? Promise.resolve()
-      : new Promise<void>((resolve) => window.addEventListener('load', () => resolve(), { once: true }));
+      : new Promise<void>((resolve) => {
+          const resolveOnce = () => {
+            window.removeEventListener('load', resolveOnce);
+            resolve();
+          };
+          window.addEventListener('load', resolveOnce, { once: true });
+          window.setTimeout(resolveOnce, 1200);
+        });
+
+    const reveal = () => {
+      if (cancelled || finished) return;
+      finished = true;
+      if (fallbackTimer) window.clearTimeout(fallbackTimer);
+
+      const minimumDisplayTime = reducedMotion ? 0 : 720;
+      const remainingTime = Math.max(0, minimumDisplayTime - (performance.now() - startedAt));
+      minimumTimer = window.setTimeout(() => {
+        if (cancelled) return;
+        setLoaderExiting(true);
+        exitTimer = window.setTimeout(() => setLoading(false), reducedMotion ? 0 : 620);
+      }, remainingTime);
+    };
 
     Promise.all([
       pageReady,
@@ -426,21 +463,19 @@ function Home() {
       preload('/hero-digital-studio.jpg'),
       preload('/tanu-portrait.png'),
     ]).then(() => {
-      if (cancelled) return;
-      if (reducedMotion) {
-        setLoading(false);
-        return;
-      }
-      window.requestAnimationFrame(() => {
-        if (cancelled) return;
-        setLoaderExiting(true);
-        exitTimer = window.setTimeout(() => setLoading(false), 620);
-      });
+      window.requestAnimationFrame(reveal);
     });
+
+    // Never trap someone behind the splash screen if a browser or network
+    // keeps a resource pending longer than expected.
+    fallbackTimer = window.setTimeout(reveal, 2800);
 
     return () => {
       cancelled = true;
       if (exitTimer) window.clearTimeout(exitTimer);
+      if (minimumTimer) window.clearTimeout(minimumTimer);
+      if (fallbackTimer) window.clearTimeout(fallbackTimer);
+      document.body.style.overflow = previousOverflow;
     };
   }, []);
 

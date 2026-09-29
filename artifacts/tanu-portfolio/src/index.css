@@ -147,6 +147,24 @@
   letter-spacing: -.04em;
   animation: signature-name-reveal .8s .28s cubic-bezier(.22, 1, .36, 1) both;
 }
+.signature-loader-progress {
+  display: block;
+  width: min(9rem, 38vw);
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  animation: signature-progress-in .7s .42s ease both;
+}
+.signature-loader-progress::after {
+  content: '';
+  display: block;
+  width: 45%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+  animation: signature-progress-sweep 1.25s cubic-bezier(.4, 0, .2, 1) infinite;
+}
 .signature-loader-glow {
   position: absolute;
   width: min(32rem, 70vw);
@@ -178,6 +196,14 @@
 @keyframes signature-name-reveal {
   from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes signature-progress-in {
+  from { opacity: 0; transform: scaleX(.7); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+@keyframes signature-progress-sweep {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(340%); }
 }
 @keyframes signature-glow-drift {
   from { transform: translate3d(-2%, 2%, 0) scale(.96); }
