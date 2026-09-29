@@ -447,11 +447,11 @@
   object-fit: cover;
   object-position: center 28%;
   box-shadow: var(--shadow-soft);
-  transform: scale(1.035);
+  transform: translate3d(var(--photo-shift-x, 0px), var(--photo-shift-y, 0px), 0) scale(1.035);
   opacity: .88;
   transition: transform 1s cubic-bezier(.22, 1, .36, 1), opacity 1s ease, filter 1s ease;
 }
-.scroll-reveal-section.is-revealed .about-photo { transform: scale(1); opacity: 1; filter: saturate(1.04); }
+.scroll-reveal-section.is-revealed .about-photo { transform: translate3d(var(--photo-shift-x, 0px), var(--photo-shift-y, 0px), 0) scale(1); opacity: 1; filter: saturate(1.04); }
 .about-photo-wrap::after {
   content: '';
   position: absolute;
@@ -622,6 +622,16 @@ button:hover .button-arrow, a:hover .button-arrow { transform: translate(3px, -3
   transition: opacity .8s ease, transform .8s cubic-bezier(.22, 1, .36, 1);
 }
 .scroll-reveal-section.is-revealed { opacity: 1; transform: translateY(0); }
+.scroll-reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.22, 1, .36, 1);
+}
+.scroll-reveal-item.is-revealed { opacity: 1; transform: translateY(0); }
+.scroll-reveal-item:nth-child(2) { transition-delay: .06s; }
+.scroll-reveal-item:nth-child(3) { transition-delay: .12s; }
+.scroll-reveal-item:nth-child(4) { transition-delay: .18s; }
+.scroll-reveal-item:nth-child(5) { transition-delay: .24s; }
 .process-step {
   opacity: 0;
   transform: translateX(18px);
@@ -647,6 +657,10 @@ button:hover .button-arrow, a:hover .button-arrow { transform: translate(3px, -3
 .pricing-line:hover .pricing-price { color: var(--pink); transform: scale(1.06); }
 .pricing-arrow { color: hsl(var(--muted-foreground)); transition: transform .35s ease, color .35s ease; }
 .pricing-line:hover .pricing-arrow { color: var(--foreground); transform: translate(3px, -3px); }
+.site-header > .section-shell { transition: box-shadow .45s ease, background-color .45s ease, transform .45s cubic-bezier(.22, 1, .36, 1); }
+.site-header.is-scrolled > .section-shell { box-shadow: 0 12px 38px rgba(30, 42, 67, .12); background-color: hsl(var(--background) / .9); transform: translateY(-1px); }
+.magnetic-button, .social-link { transform: translate3d(var(--pointer-x, 0px), var(--pointer-y, 0px), 0); transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .25s ease, color .25s ease, background-color .25s ease; }
+.social-link:hover { color: hsl(var(--foreground)); }
 .tanu-assistant { position: fixed; z-index: 45; right: 1.35rem; bottom: 1.35rem; display: flex; flex-direction: column; align-items: flex-end; gap: .75rem; }
 .tanu-assistant-trigger {
   position: relative;
@@ -657,14 +671,28 @@ button:hover .button-arrow, a:hover .button-arrow { transform: translate(3px, -3
   height: 3.35rem;
   border: 1px solid color-mix(in srgb, var(--blue) 44%, var(--line));
   border-radius: 999px;
-  background: var(--foreground);
-  color: var(--background);
-  box-shadow: var(--shadow-float);
+  overflow: visible;
+  background: linear-gradient(135deg, var(--foreground), color-mix(in srgb, var(--blue) 42%, var(--foreground)));
+  color: white;
+  box-shadow: 0 12px 34px color-mix(in srgb, var(--blue) 20%, transparent), 0 0 0 1px color-mix(in srgb, var(--pink) 22%, transparent);
   transition: transform .35s cubic-bezier(.22, 1, .36, 1), background-color .35s ease, color .35s ease;
+  animation: assistant-float 5s ease-in-out infinite;
 }
-.tanu-assistant-trigger:hover { transform: translateY(-4px) scale(1.04); background: var(--blue); color: white; }
-.tanu-assistant-trigger.is-open { background: var(--pink); color: var(--foreground); }
+.tanu-assistant-trigger::before { content: ''; position: absolute; inset: -5px; z-index: -1; border-radius: inherit; background: linear-gradient(135deg, color-mix(in srgb, var(--blue) 60%, transparent), color-mix(in srgb, var(--pink) 60%, transparent)); filter: blur(12px); opacity: .55; animation: assistant-glow 3.8s ease-in-out infinite; }
+.tanu-assistant-trigger:hover { transform: translateY(-4px) scale(1.06); background: linear-gradient(135deg, var(--blue), var(--pink)); }
+.tanu-assistant-trigger.is-open { animation: none; background: var(--pink); color: var(--foreground); }
+.tanu-assistant-mark { position: relative; display: grid; place-items: center; }
+.tanu-assistant-mark i, .tanu-assistant-mark b { position: absolute; display: block; width: .28rem; height: .28rem; border-radius: 999px; background: var(--pink); box-shadow: 0 0 10px currentColor; }
+.tanu-assistant-mark i { right: -.35rem; top: -.26rem; }
+.tanu-assistant-mark b { left: -.34rem; bottom: -.22rem; width: .18rem; height: .18rem; background: var(--blue); }
+.tanu-assistant-label { position: absolute; right: 4.1rem; top: 50%; max-width: 0; overflow: hidden; padding: 0; opacity: 0; transform: translateY(-50%) translateX(4px); color: hsl(var(--foreground)); font-size: .68rem; font-weight: 700; white-space: nowrap; transition: max-width .35s ease, opacity .25s ease, transform .35s cubic-bezier(.22, 1, .36, 1); }
+.tanu-assistant-trigger:hover .tanu-assistant-label { max-width: 5rem; opacity: 1; transform: translateY(-50%) translateX(0); }
 .tanu-assistant-spark { position: absolute; top: -.3rem; right: -.12rem; display: grid; place-items: center; width: 1.2rem; height: 1.2rem; border: 1px solid var(--line); border-radius: 999px; background: var(--background); color: var(--blue); animation: assistant-spark 3s ease-in-out infinite; }
+.whatsapp-float { position: fixed; right: 1.35rem; bottom: 6rem; display: inline-flex; align-items: center; gap: .55rem; min-height: 3rem; padding: .72rem .85rem; border: 1px solid color-mix(in srgb, #25d366 42%, var(--line)); border-radius: 999px; background: hsl(var(--background) / .86); color: hsl(var(--foreground)); box-shadow: 0 10px 30px rgba(30, 42, 67, .12); backdrop-filter: blur(18px); font-size: .68rem; font-weight: 700; letter-spacing: .02em; transform: translate3d(var(--pointer-x, 0px), var(--pointer-y, 0px), 0); transition: transform .35s cubic-bezier(.22, 1, .36, 1), border-color .25s ease, color .25s ease, background-color .25s ease; }
+.whatsapp-float svg { color: #25d366; }
+.whatsapp-float span { max-width: 0; overflow: hidden; opacity: 0; white-space: nowrap; transition: max-width .35s ease, opacity .25s ease; }
+.whatsapp-float:hover { border-color: #25d366; color: #25d366; transform: translateY(-3px); }
+.whatsapp-float:hover span { max-width: 8rem; opacity: 1; }
 .tanu-chat-panel {
   width: min(370px, calc(100vw - 2rem));
   overflow: hidden;
@@ -693,7 +721,7 @@ button:hover .button-arrow, a:hover .button-arrow { transform: translate(3px, -3
 .tanu-chat-typing span { display: block; width: .3rem; height: .3rem; margin-top: .35rem; border-radius: 999px; background: var(--blue); animation: typing-dot 1s ease-in-out infinite; }
 .tanu-chat-typing span:nth-of-type(2) { animation-delay: .12s; }
 .tanu-chat-typing span:nth-of-type(3) { animation-delay: .24s; }
-.tanu-chat-actions { display: flex; gap: .55rem; padding: .7rem 1.05rem; border-top: 1px solid var(--line); }
+.tanu-chat-actions { display: flex; flex-wrap: wrap; gap: .55rem; padding: .7rem 1.05rem; border-top: 1px solid var(--line); }
 .tanu-chat-actions a, .tanu-chat-actions button { display: inline-flex; align-items: center; gap: .25rem; border-radius: 999px; padding: .45rem .65rem; background: color-mix(in srgb, var(--blue) 9%, transparent); color: hsl(var(--foreground)); font-size: .65rem; transition: background-color .25s ease, transform .25s ease; }
 .tanu-chat-actions a:hover, .tanu-chat-actions button:hover { background: color-mix(in srgb, var(--pink) 18%, transparent); transform: translateY(-1px); }
 .tanu-chat-form { display: flex; gap: .5rem; padding: .75rem 1.05rem .45rem; }
@@ -708,6 +736,8 @@ button:hover .button-arrow, a:hover .button-arrow { transform: translate(3px, -3
 @keyframes message-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes typing-dot { 0%, 100% { opacity: .3; transform: translateY(0); } 50% { opacity: 1; transform: translateY(-3px); } }
 @keyframes assistant-spark { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-3px) rotate(8deg); } }
+@keyframes assistant-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -3px; } }
+@keyframes assistant-glow { 0%, 100% { opacity: .4; transform: scale(.94); } 50% { opacity: .8; transform: scale(1.08); } }
 @media (max-width: 767px) {
   .td-logo-nav { width: 42px; height: 30px; }
   .hero-grid { display: block; }
@@ -725,6 +755,8 @@ button:hover .button-arrow, a:hover .button-arrow { transform: translate(3px, -3
   .pricing-detail { grid-column: 2 / -1; grid-row: 2; }
   .pricing-price { font-size: 1.05rem; }
   .tanu-assistant { right: .85rem; bottom: .85rem; }
+  .whatsapp-float { right: .85rem; bottom: 5.7rem; min-height: 2.9rem; width: 2.9rem; justify-content: center; padding: .65rem; }
+  .whatsapp-float span { display: none; }
   .tanu-chat-panel { width: min(370px, calc(100vw - 1.7rem)); }
   .project-story { padding: 48px 0 58px; }
   .project-story-feature-right,
@@ -763,11 +795,14 @@ button:hover .button-arrow, a:hover .button-arrow { transform: translate(3px, -3
   .hero-visual-spark,
   .site-shell::before,
   .tanu-assistant-spark,
+   .tanu-assistant-trigger,
+   .whatsapp-float,
   .tanu-chat-panel,
   .tanu-chat-message,
   .tanu-chat-typing span { animation: none !important; transition: none !important; }
   .scroll-reveal-section,
   .process-step,
+   .scroll-reveal-item,
   .about-photo { opacity: 1 !important; transform: none !important; }
   .about-photo-wrap::after { display: none; }
 }

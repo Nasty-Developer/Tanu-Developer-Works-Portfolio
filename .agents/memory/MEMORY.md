@@ -1,0 +1,1 @@
+- [PDF rendering](pdf-rendering.md) — use the managed Python package flow for visual PDF inspection; direct pip is unavailable.

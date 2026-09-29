@@ -13,7 +13,6 @@ import {
   Linkedin,
   Mail,
   Menu,
-  MessageCircle,
   Moon,
   MoveUpRight,
   Palette,
@@ -276,7 +275,7 @@ function TanuAssistant() {
               <span className="tanu-chat-avatar"><Sparkles size={15} /></span>
               <div>
                 <p className="font-display text-sm font-semibold">Tanu AI</p>
-                <p className="tanu-chat-status"><i /> Tanu Developer assistant</p>
+                <p className="tanu-chat-status"><i /> Tanu Developer&apos;s AI Assistant</p>
               </div>
             </div>
             <button type="button" className="tanu-chat-close" onClick={() => setOpen(false)} aria-label="Close Tanu AI">
@@ -305,6 +304,7 @@ function TanuAssistant() {
             <div ref={messageEndRef} />
           </div>
           <div className="tanu-chat-actions">
+            <a href="tel:+918433553501"><Phone size={13} /> Call Tanu <ArrowUpRight size={13} /></a>
             <a href="https://wa.me/918433553501" target="_blank" rel="noreferrer">Ask on WhatsApp <ArrowUpRight size={13} /></a>
             <button type="button" onClick={openContact}>Start a project <ArrowUpRight size={13} /></button>
           </div>
@@ -329,6 +329,7 @@ function TanuAssistant() {
              <b />
            </span>
          )}
+         {!open && <span className="tanu-assistant-label">Tanu AI</span>}
       </button>
        {!open && (
          <a
@@ -848,7 +849,7 @@ function Home() {
             </div>
             <div className="pricing-list mt-16 border-t border-[var(--line)]">
               {pricingPackages.map((item) => (
-                <a key={item.number} href="#contact" onClick={(event) => { event.preventDefault(); scrollToId('#contact'); }} className="pricing-line group">
+                <a key={item.number} data-scroll-reveal-item href="#contact" onClick={(event) => { event.preventDefault(); scrollToId('#contact'); }} className="pricing-line group">
                   <span className="font-mono-custom text-[10px] text-muted-foreground">{item.number}</span>
                   <h3 className="font-display text-2xl font-semibold tracking-[-.06em] md:text-3xl">{item.name}</h3>
                   <p className="pricing-detail">{item.detail}</p>
@@ -876,7 +877,7 @@ function Home() {
 
         <section id="contact" data-scroll-reveal className="scroll-reveal-section scroll-mt-28 px-5 py-24 md:px-8 md:py-32">
           <div className="section-shell grid gap-14 md:grid-cols-[.92fr_1.08fr] md:gap-24">
-            <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Let’s make something useful</span><h2 className="mt-6 font-display text-5xl font-bold leading-[.93] tracking-[-.09em] md:text-[5.5rem]">Have a good<br /><span className="text-[var(--pink)]">one in mind?</span></h2><p className="mt-8 max-w-[390px] text-base leading-7 text-muted-foreground">Tell me what you’re building, where it’s stuck, or what you want it to become. I’ll reply at <strong className="text-foreground">tanudevworks@gmail.com</strong>.</p><div className="mt-10 flex flex-wrap gap-3"><a href="tel:+918433553501" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Phone size={14} /> Call Tanu</a><a href="https://wa.me/918433553501" target="_blank" rel="noreferrer" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><SiWhatsapp size={14} /> WhatsApp</a><a href="https://www.instagram.com/tanu.developer?stkn=MWdldTV5N3YzYnFtcw==" target="_blank" rel="noreferrer" aria-label="Follow Tanu Developer on Instagram" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--pink)]"><Instagram size={14} /> Instagram</a><a href="mailto:tanudevworks@gmail.com" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Mail size={14} /> Email directly</a></div></div>
+            <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--blue)]">Let’s make something useful</span><h2 className="mt-6 font-display text-5xl font-bold leading-[.93] tracking-[-.09em] md:text-[5.5rem]">Have a good<br /><span className="text-[var(--pink)]">one in mind?</span></h2><p className="mt-8 max-w-[390px] text-base leading-7 text-muted-foreground">Tell me what you’re building, where it’s stuck, or what you want it to become. I’ll reply at <strong className="text-foreground">tanudevworks@gmail.com</strong>.</p><div className="mt-10 flex flex-wrap gap-3"><a href="tel:+918433553501" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Phone size={14} /> Call Tanu</a><a href="https://wa.me/918433553501" target="_blank" rel="noreferrer" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><SiWhatsapp size={14} /> WhatsApp</a><a href="https://www.instagram.com/tanu.developer?stkn=MWdldTV5N3YzYnFtcw==" target="_blank" rel="noreferrer" aria-label="Follow Tanu Developer on Instagram" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--pink)]"><Instagram size={14} /> @tanu.developer</a><a href="mailto:tanudevworks@gmail.com" className="social-link flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2.5 text-xs font-semibold transition-colors hover:border-[var(--blue)]"><Mail size={14} /> Email directly</a></div></div>
             <form onSubmit={submitContact} className="contact-form border-t border-[var(--line)] pt-7 md:pt-8">
               <div className="mb-8 flex items-center justify-between"><span className="font-mono-custom text-[10px] uppercase tracking-[.18em] text-muted-foreground">Project enquiry</span><BriefcaseBusiness size={18} className="text-[var(--pink)]" /></div>
               <div className="grid gap-6 sm:grid-cols-2"><label className="text-xs font-medium">Your name<input required name="name" placeholder="What should I call you?" className="mt-2 w-full border-b border-[var(--line)] bg-transparent py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground" /></label><label className="text-xs font-medium">Your email<input required type="email" name="email" placeholder="you@company.com" className="mt-2 w-full border-b border-[var(--line)] bg-transparent py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground" /></label></div>
