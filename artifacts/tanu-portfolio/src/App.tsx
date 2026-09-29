@@ -631,7 +631,10 @@ function Home() {
       minimumTimer = window.setTimeout(() => {
         if (cancelled) return;
         setLoaderExiting(true);
-        exitTimer = window.setTimeout(() => setLoading(false), reducedMotion ? 0 : 420);
+        exitTimer = window.setTimeout(() => {
+          document.body.style.overflow = previousOverflow;
+          setLoading(false);
+        }, reducedMotion ? 0 : 420);
       }, remainingTime);
     };
 
