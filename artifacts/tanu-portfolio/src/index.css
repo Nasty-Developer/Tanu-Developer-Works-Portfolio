@@ -88,6 +88,10 @@
     transition: background-color .35s ease, color .35s ease;
   }
   ::selection { background: color-mix(in srgb, var(--pink) 42%, transparent); }
+  :where(a, button, input, textarea):focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 4px;
+  }
 }
 
 @layer utilities {
@@ -95,6 +99,19 @@
   .font-mono-custom { font-family: var(--app-font-mono); }
   .text-balance { text-wrap: balance; }
   .section-shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+}
+
+.scroll-progress {
+  position: fixed;
+  z-index: 70;
+  top: 0;
+  left: 0;
+  height: 3px;
+  min-width: 0;
+  pointer-events: none;
+  background: linear-gradient(90deg, var(--blue), var(--pink));
+  box-shadow: 0 0 18px color-mix(in srgb, var(--blue) 42%, transparent);
+  transition: width .18s ease-out;
 }
 
 .site-shell { position: relative; overflow: clip; }

@@ -536,6 +536,13 @@ function ProjectCard({ project }: { project: typeof projects[number] }) {
           className="project-image"
           loading={Number(project.number) > 2 ? 'lazy' : 'eager'}
         />
+        <div className="project-visual-overlay" aria-hidden="true">
+          <div className="project-visual-topline">
+            <span>Case study {project.number}</span>
+            <span>{project.category}</span>
+          </div>
+          <span className="project-visual-cursor">View live project <ExternalLink size={13} /></span>
+        </div>
       </div>
       <div className="project-story-copy">
         <div className="flex items-center justify-between border-b border-[var(--line)] pb-3">
@@ -561,6 +568,7 @@ function Home() {
   const [menuToast, setMenuToast] = useState(false);
   const [loading, setLoading] = useState(true);
   const [loaderExiting, setLoaderExiting] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const stored = window.localStorage.getItem('tanu-theme');
@@ -572,6 +580,27 @@ function Home() {
     document.documentElement.classList.toggle('dark', dark);
     window.localStorage.setItem('tanu-theme', dark ? 'dark' : 'light');
   }, [dark]);
+
+  useEffect(() => {
+    let frame = 0;
+    const updateProgress = () => {
+      frame = 0;
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(scrollable > 0 ? Math.min(100, (window.scrollY / scrollable) * 100) : 0);
+    };
+    const onScroll = () => {
+      if (frame) return;
+      frame = window.requestAnimationFrame(updateProgress);
+    };
+    updateProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
 
   useEffect(() => {
     const revealItems = Array.from(document.querySelectorAll<HTMLElement>('[data-scroll-reveal], [data-scroll-reveal-item]'));
@@ -753,6 +782,7 @@ function Home() {
 
   return (
     <>
+      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} aria-hidden="true" />
       <div id="top" className="site-shell min-h-[100dvh]">
       <Header dark={dark} onToggle={() => setDark(!dark)} />
       <main>
@@ -782,7 +812,7 @@ function Home() {
                 <div><p className="font-display text-3xl font-bold tracking-[-.06em]">01</p><p className="mt-1 font-mono-custom text-[10px] uppercase tracking-[.16em] text-muted-foreground">developer access</p></div>
                 <div><p className="font-display text-3xl font-bold tracking-[-.06em]">∞</p><p className="mt-1 font-mono-custom text-[10px] uppercase tracking-[.16em] text-muted-foreground">curiosity</p></div>
               </div>
-              <div className="hidden h-20 w-20 items-center justify-center rounded-full border border-[var(--line)] sm:flex"><div className="orbit absolute h-20 w-20 rounded-full border-t border-[var(--blue)]" /><ArrowDownRight size={20} /></div>
+              <div className="hero-scroll-cue hidden items-center gap-4 sm:flex"><span>scroll / explore</span><div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-[var(--line)]"><div className="orbit absolute h-20 w-20 rounded-full border-t border-[var(--blue)]" /><ArrowDownRight size={20} /></div></div>
             </div>
           </div>
         </section>
@@ -834,7 +864,7 @@ function Home() {
         <section data-scroll-reveal className="scroll-reveal-section border-y border-[var(--line)] bg-foreground px-5 py-24 text-background md:px-8 md:py-32">
           <div className="section-shell">
             <div className="flex flex-col justify-between gap-10 md:flex-row md:items-end"><div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">What I bring</span><h2 className="mt-5 max-w-[600px] font-display text-4xl font-bold leading-[.96] tracking-[-.07em] md:text-6xl">Good work starts<br />before the code.</h2></div><p className="max-w-[270px] text-sm leading-6 text-background/60">Business-focused design, direct communication, and a build process that respects your time.</p></div>
-            <div className="mt-16 border-t border-background/20">{capabilities.map(({ index, title, text, icon: Icon }) => <div key={title} className="capability-line group flex flex-col gap-4 border-b border-background/20 py-7 md:flex-row md:items-center md:gap-12"><span className="w-10 font-mono-custom text-[10px] text-background/45">{index}</span><Icon size={19} strokeWidth={1.5} className="hidden text-[var(--pink)] transition-transform group-hover:rotate-6 md:block" /><h3 className="min-w-[230px] font-display text-2xl font-semibold tracking-[-.05em]">{title}</h3><p className="max-w-[380px] text-sm leading-6 text-background/60">{text}</p><ArrowUpRight size={17} className="ml-auto hidden text-background/45 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 md:block" /></div>)}</div>
+            <div className="mt-16 border-t border-background/20">{capabilities.map(({ index, title, text, icon: Icon }) => <div key={title} data-scroll-reveal-item className="capability-line group flex flex-col gap-4 border-b border-background/20 py-7 md:flex-row md:items-center md:gap-12"><span className="w-10 font-mono-custom text-[10px] text-background/45">{index}</span><Icon size={19} strokeWidth={1.5} className="hidden text-[var(--pink)] transition-transform group-hover:rotate-6 md:block" /><h3 className="min-w-[230px] font-display text-2xl font-semibold tracking-[-.05em]">{title}</h3><p className="max-w-[380px] text-sm leading-6 text-background/60">{text}</p><ArrowUpRight size={17} className="ml-auto hidden text-background/45 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 md:block" /></div>)}</div>
           </div>
         </section>
 
@@ -871,7 +901,7 @@ function Home() {
         <section data-scroll-reveal className="scroll-reveal-section border-y border-[var(--line)] bg-secondary/35 px-5 py-24 md:px-8 md:py-32">
           <div className="section-shell grid gap-14 md:grid-cols-[.8fr_1.2fr]">
             <div><span className="font-mono-custom text-[10px] uppercase tracking-[.2em] text-[var(--pink)]">A short timeline</span><h2 className="mt-6 font-display text-5xl font-bold leading-[.96] tracking-[-.08em] md:text-6xl">In the<br />making.</h2></div>
-            <div className="relative border-l border-[var(--line)] pl-7 md:pl-12">{[['2021', 'First commercial project', 'The first real brief, the first launch, and the start of taking web work seriously.'], ['2022', 'Studio founded', 'Tanu Developer takes shape as a home for thoughtful design and full-stack development.'], ['2025', 'Premium studio launch', 'A sharper point of view: better systems, better stories, and a more considered way to build.']].map(([year, title, text], index) => <div key={year} className="relative pb-12 last:pb-0"><i className={`absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-background ${index === 2 ? 'bg-[var(--pink)]' : 'bg-[var(--blue)]'} md:-left-[55px]`} /><span className="font-mono-custom text-xs text-[var(--blue)]">{year}</span><h3 className="mt-3 font-display text-2xl font-semibold tracking-[-.05em]">{title}</h3><p className="mt-3 max-w-[420px] text-sm leading-6 text-muted-foreground">{text}</p></div>)}</div>
+            <div className="relative border-l border-[var(--line)] pl-7 md:pl-12">{[['2021', 'First commercial project', 'The first real brief, the first launch, and the start of taking web work seriously.'], ['2022', 'Studio founded', 'Tanu Developer takes shape as a home for thoughtful design and full-stack development.'], ['2025', 'Premium studio launch', 'A sharper point of view: better systems, better stories, and a more considered way to build.']].map(([year, title, text], index) => <div key={year} data-scroll-reveal-item className="relative pb-12 last:pb-0"><i className={`absolute -left-[31px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-background ${index === 2 ? 'bg-[var(--pink)]' : 'bg-[var(--blue)]'} md:-left-[55px]`} /><span className="font-mono-custom text-xs text-[var(--blue)]">{year}</span><h3 className="mt-3 font-display text-2xl font-semibold tracking-[-.05em]">{title}</h3><p className="mt-3 max-w-[420px] text-sm leading-6 text-muted-foreground">{text}</p></div>)}</div>
           </div>
         </section>
 
@@ -884,6 +914,10 @@ function Home() {
               <label className="mt-7 block text-xs font-medium">What are we making?<textarea required name="message" rows={4} placeholder="A sentence or two is perfect." className="mt-2 w-full resize-none border-b border-[var(--line)] bg-transparent py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/70 focus:border-foreground" /></label>
               <div className="mt-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-center"><span className="text-xs text-muted-foreground">{sent ? 'Thanks — your note is ready to send.' : 'Usually replies within 1–2 working days.'}</span><button type="submit" className="group flex items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3.5 text-xs font-semibold text-background transition-transform hover:-translate-y-0.5">{sent ? <Check size={15} /> : <Send size={15} />} {sent ? 'Message noted' : 'Send enquiry'} {!sent && <ArrowUpRight size={14} className="button-arrow" />}</button></div>
             </form>
+            <div className="contact-signals md:col-start-2" aria-label="Availability details">
+              <span><i /> Available for select work</span>
+              <span>Usually replies within 1–2 working days</span>
+            </div>
           </div>
         </section>
       </main>
