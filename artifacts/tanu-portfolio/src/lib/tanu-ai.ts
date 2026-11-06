@@ -37,7 +37,7 @@ const answers = [
   {
     matches: ['work', 'portfolio', 'project examples', 'projects', 'show'],
     response:
-      'The portfolio includes work for advertising, healthcare, dental, animal rescue, restaurants, gaming, fitness, fashion, and e-commerce. Browse the Work section to open the live projects.',
+      'The portfolio includes work for interior design, advertising, healthcare, dental, animal rescue, restaurants, gaming, fitness, fashion, and e-commerce. Browse the Work section to open the live projects.',
   },
   {
     matches: ['contact', 'call', 'whatsapp', 'talk', 'reach', 'email', 'start'],

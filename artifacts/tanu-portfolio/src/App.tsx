@@ -49,6 +49,15 @@ const navItems = [
 const projects = [
   {
     number: '01',
+    name: 'Atelier Aara',
+    category: 'Interior Design / Architecture / Luxury Home',
+    description: 'A quiet, editorial portfolio for a Mumbai interiors studio, with filterable projects, a before/after transformation slider and an instant budget estimator that turns a curious visitor into a WhatsApp enquiry.',
+    visual: '/project-visuals/atelier-aara.jpg',
+    layout: 'feature-wide',
+    liveUrl: 'https://atelier-aara.vercel.app/',
+  },
+  {
+    number: '02',
     name: 'New National Advertising',
     category: 'Advertising / Printing / Signage',
     description: 'A premium digital presence for commercial signage, digital printing, and modern brand production.',
@@ -57,7 +66,7 @@ const projects = [
     liveUrl: 'https://newnationaladvertising.com/',
   },
   {
-    number: '02',
+    number: '03',
     name: 'Ayush Medico',
     category: 'Pharmacy / Medical',
     description: 'A trustworthy pharmacy experience that makes everyday healthcare feel clear, accessible, and easy to navigate.',
@@ -66,7 +75,7 @@ const projects = [
     liveUrl: 'https://ayushmedico.com/',
   },
   {
-    number: '03',
+    number: '04',
     name: 'Dental Care Trust',
     category: 'Dental / Healthcare',
     description: 'An elegant healthcare experience built around calm guidance, professional care, and confidence at every step.',
@@ -75,7 +84,7 @@ const projects = [
     liveUrl: 'https://dentalcaretrust.com/',
   },
   {
-    number: '04',
+    number: '05',
     name: 'SaveStreet Dogs',
     category: 'Animal Rescue / NGO',
     description: 'A compassionate adoption and rescue experience that helps more people find a meaningful way to help.',
@@ -84,7 +93,7 @@ const projects = [
     liveUrl: 'https://savestreetdogss.com/',
   },
   {
-    number: '05',
+    number: '06',
     name: 'Restaurant Website',
     category: 'Restaurant / Food / Hospitality',
     description: 'A premium hospitality experience shaped around atmosphere, appetite, and the anticipation of a good table.',
@@ -94,7 +103,7 @@ const projects = [
     liveUrl: 'https://serai-fa-premium.vercel.app/',
   },
   {
-    number: '06',
+    number: '07',
     name: 'Somil Dental Clinic',
     category: 'Dental Clinic',
     description: 'A modern clinic presence that makes care, expertise, and the next appointment feel easy to understand.',
@@ -103,7 +112,7 @@ const projects = [
     liveUrl: 'https://somil-dental-clinic.vercel.app/',
   },
   {
-    number: '07',
+    number: '08',
     name: 'Gaming Website',
     category: 'Gaming',
     description: 'A mature gaming experience built around discovery, performance, and the details that make a setup feel ready.',
@@ -112,7 +121,7 @@ const projects = [
     liveUrl: 'https://tanugamehub.vercel.app/',
   },
   {
-    number: '08',
+    number: '09',
     name: 'Gym Website',
     category: 'Gym / Fitness',
     description: 'An energetic fitness experience with the focus and confidence of a place built for showing up and getting stronger.',
@@ -121,7 +130,7 @@ const projects = [
     liveUrl: 'https://aurum-gym.vercel.app/',
   },
   {
-    number: '09',
+    number: '10',
     name: 'Clothing Website',
     category: 'Clothing / Fashion',
     description: 'An editorial fashion storefront where considered presentation gives everyday pieces room to speak.',
@@ -130,7 +139,7 @@ const projects = [
     liveUrl: 'https://sea-clothing.vercel.app/',
   },
   {
-    number: '10',
+    number: '11',
     name: 'E-Commerce Website',
     category: 'E-Commerce',
     description: 'A clean retail experience that gives products, browsing, and the path to purchase equal attention.',
